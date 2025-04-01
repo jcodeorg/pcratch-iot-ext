@@ -1,6 +1,6 @@
 {
   "name": "mbit-more-v2",
-  "version": "0.2.5",
+  "version": "0.3.1",
   "description": "Full-functional extension of micro:bit for Scratch3",
   "module": "./dist/microbitMore.mjs",
   "scripts": {
@@ -12,5 +12,8 @@
   "devDependencies": {
     "xcratch-build": "^0.5.0",
     "xcratch-register": "^0.4.2"
+  },
+  "dependencies": {
+    "minilog": "^3.1.0"
   }
 }

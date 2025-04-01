@@ -158,6 +158,7 @@ class WebBLE {
      */
     // eslint-disable-next-line no-unused-vars
     write (serviceId, characteristicId, message, encoding = null, withResponse = null) {
+        console.log('Write!');
         const value = encoding === 'base64' ? base64ToUint8Array(message) : message;
         return this._server.getPrimaryService(serviceId)
             .then(service => service.getCharacteristic(characteristicId))

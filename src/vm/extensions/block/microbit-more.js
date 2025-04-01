@@ -38,7 +38,8 @@ const BLECommand = {
     CMD_PIN: 0x01,
     CMD_DISPLAY: 0x02,
     CMD_AUDIO: 0x03,
-    CMD_DATA: 0x04
+    CMD_DATA: 0x04,
+    CMD_PIOT: 0x05  // for Pcratch IoT
 };
 
 /**
@@ -66,6 +67,16 @@ const MbitMoreDisplayCommand =
     TEXT: 0x01,
     PIXELS_0: 0x02,
     PIXELS_1: 0x03
+};
+
+/**
+ * Enum for PcratchIoT.
+ * @readonly
+ * @enum {number}
+ */
+const MbitMorePIOTCommand =
+{
+    NEOPIXEL: 0x01
 };
 
 /**
@@ -333,11 +344,8 @@ export class MicrobitMore {
             this.analogValue[pinIndex] = 0;
         });
 
-        this.gpio = [
-            0, 1, 2,
-            8,
-            12, 13, 14, 15, 16
-        ];
+        // this.gpio = [0, 1, 2, 8, 12, 13, 14, 15, 16];
+        this.gpio = [0, 1, 2, 16, 17, 18, 19, 20, 21];
         this.gpio.forEach(pinIndex => {
             this.digitalLevel[pinIndex] = 0;
         });
@@ -1020,66 +1028,50 @@ export class MicrobitMore {
      * @param {Uint8Array} command.message Contents of the command.
      * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
      */
-    sendCommand (command) {
-        const data = uint8ArrayToBase64(
-            new Uint8Array([
-                command.id,
-                ...command.message
-            ])
-        );
-        return new Promise(resolve => {
-            this._ble.write(
-                MM_SERVICE.ID,
-                MM_SERVICE.COMMAND_CH,
-                data,
-                'base64',
-                false
-            );
-            setTimeout(() => resolve(), this.sendCommandInterval);
-        });
+    sendOneCommand (command) {
+        console.log('sendOneCommand M4');
+        const data = new Uint8Array([
+            command.id,
+            ...command.message
+        ])
+        return this._ble.write(
+            MM_SERVICE.ID,
+            MM_SERVICE.COMMAND_CH,
+            data,
+            null,
+            true // true // resolve after peripheral's response. // false
+        )
     }
 
     /**
-     * Send multiple commands sequentially.
+     * コマンドを順次処理し、すべてのコマンドが終了したら解決するプロミスを返却
      * @param {Array.<{id: number, message: Uint8Array}>} commands array of command.
      * @param {BlockUtility} util - utility object provided by the runtime.
-     * @return {?Promise} a Promise that resolves when the all commands was sent.
+     * @return {Promise} a Promise that resolves when all commands are processed.
      */
-    sendCommandSet (commands, util) {
-        if (!this.isConnected()) return Promise.resolve();
-        if (this.bleBusy) {
-            this.bleAccessWaiting = true;
-            if (util) {
-                util.yield(); // re-try this call after a while.
-            } else {
-                setTimeout(() => this.sendCommandSet(commands, util), 1);
-            }
-            return; // Do not return Promise.resolve() to re-try.
-        }
-        this.bleBusy = true;
-        // Clear busy and BLE access waiting flag when the scratch-link does not respond.
-        this.bleBusyTimeoutID = window.setTimeout(() => {
-            this.bleBusy = false;
-            this.bleAccessWaiting = false;
-        }, 1000);
-        return new Promise(resolve => {
-            commands.reduce((acc, cur) => acc.then(() => this.sendCommand(cur)),
-                Promise.resolve()
-            )
-                .then(() => {
-                    window.clearTimeout(this.bleBusyTimeoutID);
-                })
-                .catch(err => {
-                    this._ble.handleDisconnectError(err);
-                })
-                .finally(() => {
-                    this.bleBusy = false;
-                    this.bleAccessWaiting = false;
+    sendCommandSet(commands, util) {
+        return new Promise((resolve, reject) => {
+            const processNextCommand = (index) => {
+                if (index >= commands.length) {
                     resolve();
-                });
+                    return;
+                }
+
+                const command = commands[index];
+                this.sendOneCommand(command)
+                    .then(() => {
+                        setTimeout(() => processNextCommand(index + 1), 1); // 1ms: sendCommandInterval
+                    })
+                    .catch(error => {
+                        console.error('Error processing command:', error);
+                        reject(error);
+                    });
+            };
+
+            processNextCommand(0);
         });
     }
-
+    
     /**
      * Starts reading data from peripheral after BLE has connected to it.
      */
@@ -1405,4 +1397,35 @@ export class MicrobitMore {
         }
         return null;
     }
+
+    /**
+     * Set NeoPixcel Color
+     * @property {number} args.N - number.
+     * @property {string} args.COLOR - Comma-separated RGB string.
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when sending done or undefined if this process was yield.
+     */
+    setNeoPixcelColor(n, color, util) {
+        let r, g, b;
+        try {
+            [r, g, b] = color.split(',').map(Number);
+            if (isNaN(r) || isNaN(g) || isNaN(b)) {
+                throw new Error('Invalid RGB values');
+            }
+        } catch (error) {
+            console.error('Error parsing RGB values:', error);
+            r = 0;
+            g = 0;
+            b = 0;
+        }
+        // NeoPixel の色を設定するためのコマンドを作成
+        const command = {
+            id: (BLECommand.CMD_PIOT << 5) | MbitMorePIOTCommand.NEOPIXEL,
+            message: new Uint8Array([n, r, g, b])
+        };
+        // コマンドを送信
+        return this.sendCommandSet([command], util);
+    }
+
+
 }

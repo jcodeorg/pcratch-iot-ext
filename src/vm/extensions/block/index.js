@@ -1267,6 +1267,48 @@ class MicrobitMoreBlocks {
                             defaultValue: 'data'
                         }
                     }
+                },
+                {
+                    opcode: 'getRGB',
+                    text: formatMessage({
+                        id: 'mbitMore.getRGB',
+                        default: 'RGB [R] [G] [B]',
+                        description: 'get the RGB value'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        R: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        },
+                        G: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        },
+                        B: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        }
+                    }
+                },
+                {
+                    opcode: 'setNeoPixcelColor',
+                    text: formatMessage({
+                        id: 'mbitMore.setNeoPixcelColor',
+                        default: 'set [N] NeoPixcel with color [COLOR]',
+                        description: 'set NeoPixcel color'
+                    }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        N: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 0
+                        },
+                        COLOR: {
+                            type: ArgumentType.STRING,
+                            defaultValue: '0,0,0'
+                        }
+                    }
                 }
             ],
             menus: {
@@ -1930,6 +1972,32 @@ class MicrobitMoreBlocks {
         const state = (args.STATE === 'connected');
         return (state === this.microbit.isConnected());
     }
+
+    /**
+     * Return the RGB string
+     * @param {object} args - the block's arguments.
+     * @property {number} args.R - Red.
+     * @property {number} args.G - Green.
+     * @property {number} args.B - Blue.
+     * @return {string} Comma-separated RGB string.
+     */
+    getRGB (args) {
+        return `${args.R},${args.G},${args.B}`;
+    }
+
+    /**
+     * Rerutn the last content of the messge or undefined if the data which has the label is not received.
+     * @param {object} args - the block's arguments.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {promise | undefined} - a Promise that resolves when the command was sent
+     *                                 or undefined if this process was yield.
+     * @property {number} args.N - number.
+     * @property {string} args.COLOR - Comma-separated RGB string.
+     */
+    setNeoPixcelColor (args, util) {
+        return this.microbit.setNeoPixcelColor(args.N, args.COLOR, util);
+    }
+    
 }
 
 export {
