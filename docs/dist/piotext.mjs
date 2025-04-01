@@ -3500,15 +3500,15 @@ var G = 1024;
 /**
  * Manage communication with a MicroBit peripheral over a Scrath Link client socket.
  */
-var MicrobitMore = /*#__PURE__*/function () {
+var piotExt = /*#__PURE__*/function () {
   /**
    * Construct a MicroBit communication object.
    * @param {Runtime} runtime - the Scratch 3.0 runtime
    * @param {string} extensionId - the id of the extension
    */
-  function MicrobitMore(runtime, extensionId) {
+  function piotExt(runtime, extensionId) {
     var _this = this;
-    _classCallCheck(this, MicrobitMore);
+    _classCallCheck(this, piotExt);
     /**
      * The Scratch 3.0 runtime used to trigger the green flag button.
      * @type {Runtime}
@@ -3645,7 +3645,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   /**
    * Initialize configuration of the micro:bit.
    */
-  return _createClass(MicrobitMore, [{
+  return _createClass(piotExt, [{
     key: "initConfig",
     value: function initConfig() {
       this.config = {};
@@ -4653,14 +4653,14 @@ var setupTranslations = function setupTranslations() {
     Object.assign(localeSetup.translations[localeSetup.locale], translations[localeSetup.locale]);
   }
 };
-var EXTENSION_ID = 'microbitMore';
+var EXTENSION_ID = 'piotExt';
 
 /**
  * URL to get this extension as a module.
  * When it was loaded as a module, 'extensionURL' will be replaced a URL which is retrieved from.
  * @type {string}
  */
-var extensionURL = 'https://microbit-more.github.io/dist/microbitMore.mjs';
+var extensionURL = 'https://jcodeorg.github.io/pcratch-iot-ext/dist/piotext.mjs';
 
 /**
  * Enum for name of pull mode.
@@ -4781,13 +4781,13 @@ var AxisSymbol = {
 /**
  * Scratch 3.0 blocks to interact with a MicroBit peripheral.
  */
-var MicrobitMoreBlocks = /*#__PURE__*/function () {
+var piotExtBlocks = /*#__PURE__*/function () {
   /**
    * Construct a set of MicroBit blocks.
    * @param {Runtime} runtime - the Scratch 3.0 runtime.
    */
-  function MicrobitMoreBlocks(runtime) {
-    _classCallCheck(this, MicrobitMoreBlocks);
+  function piotExtBlocks(runtime) {
+    _classCallCheck(this, piotExtBlocks);
     /**
      * The Scratch 3.0 runtime.
      * @type {Runtime}
@@ -4798,7 +4798,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
       formatMessage = runtime.formatMessage;
     }
     // Create a new MicroBit peripheral instance
-    this.microbit = new MicrobitMore(this.runtime, MicrobitMoreBlocks.EXTENSION_ID);
+    this.microbit = new piotExt(this.runtime, piotExtBlocks.EXTENSION_ID);
 
     /**
      * The previous timestamps of button events.
@@ -4828,7 +4828,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
   /**
    * @returns {object} metadata for this extension and its blocks.
    */
-  return _createClass(MicrobitMoreBlocks, [{
+  return _createClass(piotExtBlocks, [{
     key: "GESTURES_MENU",
     get:
     /**
@@ -5306,9 +5306,9 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
     value: function getInfo() {
       setupTranslations();
       return {
-        id: MicrobitMoreBlocks.EXTENSION_ID,
-        name: MicrobitMoreBlocks.EXTENSION_NAME,
-        extensionURL: MicrobitMoreBlocks.extensionURL,
+        id: piotExtBlocks.EXTENSION_ID,
+        name: piotExtBlocks.EXTENSION_NAME,
+        extensionURL: piotExtBlocks.extensionURL,
         blockIconURI: img,
         showStatusButton: true,
         blocks: [{
@@ -6659,4 +6659,4 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
   }]);
 }();
 
-export { MicrobitMoreBlocks as blockClass, entry };
+export { piotExtBlocks as blockClass, entry };

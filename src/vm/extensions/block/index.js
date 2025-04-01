@@ -5,7 +5,7 @@ import Cast from '../../util/cast';
 import blockIcon from './block-icon.png';
 import translations from './translations.json';
 
-import {MicrobitMore} from './microbit-more';
+import {piotExt} from './microbit-more';
 
 let formatMessage = messageData => messageData.defaultMessage;
 
@@ -22,14 +22,14 @@ const setupTranslations = () => {
     }
 };
 
-const EXTENSION_ID = 'microbitMore';
+const EXTENSION_ID = 'piotExt';
 
 /**
  * URL to get this extension as a module.
  * When it was loaded as a module, 'extensionURL' will be replaced a URL which is retrieved from.
  * @type {string}
  */
-let extensionURL = 'https://microbit-more.github.io/dist/microbitMore.mjs';
+let extensionURL = 'https://jcodeorg.github.io/pcratch-iot-ext/dist/piotext.mjs';
 
 /**
  * Enum for name of pull mode.
@@ -151,7 +151,7 @@ const AxisSymbol = {
 /**
  * Scratch 3.0 blocks to interact with a MicroBit peripheral.
  */
-class MicrobitMoreBlocks {
+class piotExtBlocks {
 
     /**
      * A translation object which is used in this class.
@@ -723,7 +723,7 @@ class MicrobitMoreBlocks {
             formatMessage = runtime.formatMessage;
         }
         // Create a new MicroBit peripheral instance
-        this.microbit = new MicrobitMore(this.runtime, MicrobitMoreBlocks.EXTENSION_ID);
+        this.microbit = new piotExt(this.runtime, piotExtBlocks.EXTENSION_ID);
 
         /**
          * The previous timestamps of button events.
@@ -756,9 +756,9 @@ class MicrobitMoreBlocks {
     getInfo () {
         setupTranslations();
         return {
-            id: MicrobitMoreBlocks.EXTENSION_ID,
-            name: MicrobitMoreBlocks.EXTENSION_NAME,
-            extensionURL: MicrobitMoreBlocks.extensionURL,
+            id: piotExtBlocks.EXTENSION_ID,
+            name: piotExtBlocks.EXTENSION_NAME,
+            extensionURL: piotExtBlocks.extensionURL,
             blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
@@ -2001,6 +2001,6 @@ class MicrobitMoreBlocks {
 }
 
 export {
-    MicrobitMoreBlocks as default,
-    MicrobitMoreBlocks as blockClass
+    piotExtBlocks as default,
+    piotExtBlocks as blockClass
 };
