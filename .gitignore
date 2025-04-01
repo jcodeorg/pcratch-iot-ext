@@ -10,3 +10,4 @@ npm-*
 
 src/vm/*
 !src/vm/extensions/
+package-lock.json
