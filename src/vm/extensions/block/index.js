@@ -168,7 +168,7 @@ class piotExtBlocks {
     static get EXTENSION_NAME () {
         return formatMessage({
             id: 'mbitMore.name',
-            default: 'MicroBit More',
+            default: 'Pcratch IoT',
             description: 'name of the extension'
         });
     }

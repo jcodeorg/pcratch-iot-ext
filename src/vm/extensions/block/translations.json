@@ -1,6 +1,6 @@
 {
   "de": {
-    "mbitMore.name": "MicroBit More",
+    "mbitMore.name": "Pcratch IoT",
     "mbitMore.whenButtonEvent": "Wenn Taste [NAME] [EVENT] ist",
     "mbitMore.buttonIDMenu.a": "A",
     "mbitMore.buttonIDMenu.b": "B",
@@ -88,7 +88,7 @@
     "mbitMore.selectCommunicationRoute.cancel": "abbrechen"
   },
   "ja": {
-    "mbitMore.name": "MicroBit More",
+    "mbitMore.name": "Pcratch IoT",
     "mbitMore.whenButtonEvent": "ボタン [NAME] が [EVENT] とき",
     "mbitMore.buttonIDMenu.a": "A",
     "mbitMore.buttonIDMenu.b": "B",
@@ -178,7 +178,7 @@
     "mbitMore.setNeoPixcelColor": "NeoPixcel [N] を [COLOR] にする"
   },
   "ja-Hira": {
-    "mbitMore.name": "MicroBit More",
+    "mbitMore.name": "Pcratch IoT",
     "mbitMore.whenButtonEvent": "[NAME] ボタンが [EVENT] とき",
     "mbitMore.buttonIDMenu.a": "A",
     "mbitMore.buttonIDMenu.b": "B",
@@ -266,7 +266,7 @@
     "mbitMore.selectCommunicationRoute.cancel": "やめる"
   },
   "pt-br": {
-    "mbitMore.name": "MicroBit More",
+    "mbitMore.name": "Pcratch IoT",
     "mbitMore.lightLevel": "Intensidade da Luz",
     "mbitMore.compassHeading": "Está em direção ao Norte",
     "mbitMore.magneticForce": "Força Magnética [AXIS]",
@@ -279,7 +279,7 @@
     "mbitMore.digitalValueMenu.High": "ligado"
   },
   "pt": {
-    "mbitMore.name": "MicroBit More",
+    "mbitMore.name": "Pcratch IoT",
     "mbitMore.lightLevel": "Intensidade da Luz",
     "mbitMore.compassHeading": "Está em direção ao Norte",
     "mbitMore.magneticForce": "Força Magnética [AXIS]",
