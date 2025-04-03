@@ -10,12 +10,12 @@ import pcratchIoTConnectionIconURL from './connection-icon.svg';
 import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 import translations from './translations.json';
 
-const version = 'v0.1.1';
+const version = 'v0.1.2';
 
 const entry = {
     get name () {
         return `${formatMessage({
-            defaultMessage: 'MicroBit More',
+            defaultMessage: 'Pcratch IoT',
             description: 'Name of this extension',
             id: 'pcratchIoT.entry.name'
         })} (${version})`;

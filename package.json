@@ -4,8 +4,8 @@
   "description": "Full-functional extension of Pcratch IoT for Pcratch",
   "module": "./dist/pcratchIoT.mjs",
   "scripts": {
-    "register": "npx xcratch-register --id=pcratchIoT --gui=../../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util io",
-    "build": "npx xcratch-build --module=pcratchIoT --gui=../../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --output=./dist",
+    "register": "npx xcratch-register --id=pcratchIoT --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util io",
+    "build": "npx xcratch-build --module=pcratchIoT --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --output=./dist",
     "start:local": "cd ../scratch-gui && npm run start -- --https",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
