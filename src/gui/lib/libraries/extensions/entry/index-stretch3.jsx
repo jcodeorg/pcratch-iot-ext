@@ -10,18 +10,18 @@ import pcratchIoTConnectionIconURL from './connection-icon.svg';
 import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 import translations from './translations.json';
 
-const version = 'v0.0.1';
+const version = 'v0.1.1';
 
 const entry = {
     get name () {
         return `${formatMessage({
-            defaultMessage: 'Pcratch IoT extension',
+            defaultMessage: 'pcratch IoT',
             description: 'Name of this extension',
             id: 'pcratchIoT.entry.name'
         })} (${version})`;
     },
     extensionId: 'pcratchIoT',
-    extensionURL: 'https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs',
+    extensionURL: null,
     collaborator: 'Programing Education Lab',
     iconURL: pcratchIoTIconURL,
     insetIconURL: pcratchIoTInsetIconURL,
