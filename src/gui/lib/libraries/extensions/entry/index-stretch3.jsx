@@ -1,54 +1,70 @@
-import formatMessage from 'format-message';
+import React from 'react';
+import {FormattedMessage} from 'react-intl';
 
 /**
  * MicroBit More extension
  */
 
-import pcratchIoTIconURL from './entry-icon.png';
-import pcratchIoTInsetIconURL from './inset-icon.svg';
-import pcratchIoTConnectionIconURL from './connection-icon.svg';
-import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
-import translations from './translations.json';
+import iconURL from './entry-icon.png';
+import insetIconURL from './inset-icon.svg';
+import connectionIconURL from './connection-icon.svg';
+import connectionSmallIconURL from './connection-small-icon.svg';
 
-const version = 'v0.1.5';
+const version = '0.1.6';
+const translations =
+{
+    "en": {
+        "pcratchIoT.entry.name": "Pcratch IoT",
+        "pcratchIoT.entry.description": `Play with all functions of Pcratch IoT.(${version})`
+    },
+    "ja": {
+        "pcratchIoT.entry.name": "ぷくらっち IoT",
+        "pcratchIoT.entry.description": `ぷくらっちIoTのすべての機能で遊ぶ。 (${version})`
+    },
+    "ja-Hira": {
+        "pcratchIoT.entry.name": "ぷくらっち IoT",
+        "pcratchIoT.entry.description": `ぷくらっちIoTのすべてのきのうであそぶ。 (${version})`
+    }
+};
 
 const entry = {
-    get name () {
-        return `${formatMessage({
-            defaultMessage: 'Pcratch IoT',
-            description: 'Name of this extension',
-            id: 'pcratchIoT.entry.name'
-        })} (${version})`;
-    },
+    name: (
+        <FormattedMessage
+            defaultMessage="Pcratch IoT"
+            description="Name for this extension"
+            id="pcratchIoT.entry.name"
+        />
+    ),
     extensionId: 'pcratchIoT',
     extensionURL: null,
-    collaborator: 'Programing Education Lab',
-    iconURL: pcratchIoTIconURL,
-    insetIconURL: pcratchIoTInsetIconURL,
-    get description () {
-        return formatMessage({
-            defaultMessage: 'Play with all functions of micro:bit.',
-            description: "Description for the 'Microbit More' extension",
-            id: 'mbitMore.entry.description'
-        });
-    },
+    collaborator: 'Programming Education Lab',
+    iconURL: iconURL,
+    insetIconURL: insetIconURL,
+    description: (
+        <FormattedMessage
+            defaultMessage="Play with all functions of Pcratch IoT."
+            description="Description for the 'Pcratch IoT' extension"
+            id="pcratchIoT.entry.description"
+        />
+    ),
     featured: true,
     disabled: false,
     bluetoothRequired: true,
     internetConnectionRequired: false,
     launchPeripheralConnectionFlow: true,
     useAutoScan: false,
-    connectionIconURL: pcratchIoTConnectionIconURL,
-    connectionSmallIconURL: pcratchIoTConnectionSmallIconURL,
-    get connectingMessage () {
-        return formatMessage({
-            defaultMessage: 'Connecting',
-            description: 'Message to help people connect to their micro:bit.',
-            id: 'gui.extension.microbit.connectingMessage'
-        });
-    },
-    helpLink: 'https://microbit-more.github.io/',
+    connectionIconURL: connectionIconURL,
+    connectionSmallIconURL: connectionSmallIconURL,
+    connectingMessage: (
+        <FormattedMessage
+            defaultMessage="Connecting"
+            description="Message to help people connect to their Pcratch IoT."
+            id="gui.extension.microbitMore.description"
+        />
+    ),
+    helpLink: 'https://kitaratch.github.io/',
     translationMap: translations
 };
 
+export {entry}; // loadable-extension needs this line.
 export default entry;
