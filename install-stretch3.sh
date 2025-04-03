@@ -7,8 +7,8 @@
 
 LF=$(printf '\\\012_')
 LF=${LF%_}
-EXTENSION_REP=microbitMore
-EXTENSION_ID=microbitMore
+EXTENSION_REP=pcratch-iot-ext
+EXTENSION_ID=pcratchIoT
 
 ### register it as a builtin extenstion
 mkdir -p node_modules/scratch-vm/src/extensions/${EXTENSION_ID}

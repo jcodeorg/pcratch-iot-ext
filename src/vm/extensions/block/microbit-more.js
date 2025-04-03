@@ -257,7 +257,7 @@ const G = 1024;
 /**
  * Manage communication with a MicroBit peripheral over a Scrath Link client socket.
  */
-export class piotExt {
+export class pcratchIoT {
 
     /**
      * Construct a MicroBit communication object.

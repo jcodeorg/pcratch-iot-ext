@@ -5,7 +5,7 @@ import Cast from '../../util/cast';
 import blockIcon from './block-icon.png';
 import translations from './translations.json';
 
-import {piotExt} from './microbit-more';
+import {pcratchIoT} from './microbit-more';
 
 let formatMessage = messageData => messageData.defaultMessage;
 
@@ -22,14 +22,14 @@ const setupTranslations = () => {
     }
 };
 
-const EXTENSION_ID = 'piotExt';
+const EXTENSION_ID = 'pcratchIoT';
 
 /**
  * URL to get this extension as a module.
  * When it was loaded as a module, 'extensionURL' will be replaced a URL which is retrieved from.
  * @type {string}
  */
-let extensionURL = 'https://jcodeorg.github.io/pcratch-iot-ext/dist/piotext.mjs';
+let extensionURL = 'https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs';
 
 /**
  * Enum for name of pull mode.
@@ -151,7 +151,7 @@ const AxisSymbol = {
 /**
  * Scratch 3.0 blocks to interact with a MicroBit peripheral.
  */
-class piotExtBlocks {
+class pcratchIoTBlocks {
 
     /**
      * A translation object which is used in this class.
@@ -723,7 +723,7 @@ class piotExtBlocks {
             formatMessage = runtime.formatMessage;
         }
         // Create a new MicroBit peripheral instance
-        this.microbit = new piotExt(this.runtime, piotExtBlocks.EXTENSION_ID);
+        this.microbit = new pcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
 
         /**
          * The previous timestamps of button events.
@@ -756,9 +756,9 @@ class piotExtBlocks {
     getInfo () {
         setupTranslations();
         return {
-            id: piotExtBlocks.EXTENSION_ID,
-            name: piotExtBlocks.EXTENSION_NAME,
-            extensionURL: piotExtBlocks.extensionURL,
+            id: pcratchIoTBlocks.EXTENSION_ID,
+            name: pcratchIoTBlocks.EXTENSION_NAME,
+            extensionURL: pcratchIoTBlocks.extensionURL,
             blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
@@ -2001,6 +2001,6 @@ class piotExtBlocks {
 }
 
 export {
-    piotExtBlocks as default,
-    piotExtBlocks as blockClass
+    pcratchIoTBlocks as default,
+    pcratchIoTBlocks as blockClass
 };

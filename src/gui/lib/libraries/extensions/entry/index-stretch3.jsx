@@ -4,32 +4,32 @@ import formatMessage from 'format-message';
  * MicroBit More extension
  */
 
-import microbitMoreIconURL from './entry-icon.png';
-import microbitMoreInsetIconURL from './inset-icon.svg';
-import microbitMoreConnectionIconURL from './connection-icon.svg';
-import microbitMoreConnectionSmallIconURL from './connection-small-icon.svg';
+import pcratchIoTIconURL from './entry-icon.png';
+import pcratchIoTInsetIconURL from './inset-icon.svg';
+import pcratchIoTConnectionIconURL from './connection-icon.svg';
+import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 import translations from './translations.json';
 
-const version = 'v2-0.2.5';
+const version = 'v0.0.1';
 
 const entry = {
     get name () {
         return `${formatMessage({
-            defaultMessage: 'MicroBit More',
+            defaultMessage: 'Pcratch IoT extension',
             description: 'Name of this extension',
-            id: 'mbitMore.entry.name'
+            id: 'pcratchIoT.entry.name'
         })} (${version})`;
     },
-    extensionId: 'microbitMore',
-    extensionURL: null,
-    collaborator: 'Yengawa Lab',
-    iconURL: microbitMoreIconURL,
-    insetIconURL: microbitMoreInsetIconURL,
+    extensionId: 'pcratchIoT',
+    extensionURL: 'https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs',
+    collaborator: 'Programing Education Lab',
+    iconURL: pcratchIoTIconURL,
+    insetIconURL: pcratchIoTInsetIconURL,
     get description () {
         return formatMessage({
-            defaultMessage: 'Play with all functions of micro:bit.',
-            description: "Description for the 'Microbit More' extension",
-            id: 'mbitMore.entry.description'
+            defaultMessage: 'Play with all functions of Pcratch IoT.',
+            description: "Description for the 'Pcratch Iot' extension",
+            id: 'pcratchIoT.entry.description'
         });
     },
     featured: true,
@@ -38,16 +38,16 @@ const entry = {
     internetConnectionRequired: false,
     launchPeripheralConnectionFlow: true,
     useAutoScan: false,
-    connectionIconURL: microbitMoreConnectionIconURL,
-    connectionSmallIconURL: microbitMoreConnectionSmallIconURL,
+    connectionIconURL: pcratchIoTConnectionIconURL,
+    connectionSmallIconURL: pcratchIoTConnectionSmallIconURL,
     get connectingMessage () {
         return formatMessage({
             defaultMessage: 'Connecting',
-            description: 'Message to help people connect to their micro:bit.',
-            id: 'gui.extension.microbit.connectingMessage'
+            description: 'Message to help people connect to their Pcratch IoT.',
+            id: 'gui.extension.pcratchIoT.connectingMessage'
         });
     },
-    helpLink: 'https://microbit-more.github.io/',
+    helpLink: 'https://jcodeorg.github.io/pcratch-iot-ext/',
     translationMap: translations
 };
 

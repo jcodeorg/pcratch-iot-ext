@@ -4,10 +4,10 @@ let formatMessage = messageData => messageData.defaultMessage;
  * MicroBit More extension
  */
 
-import piotExtIconURL from './entry-icon.png';
-import piotExtInsetIconURL from './inset-icon.svg';
-import piotExtConnectionIconURL from './connection-icon.svg';
-import piotExtConnectionSmallIconURL from './connection-small-icon.svg';
+import pcratchIoTIconURL from './entry-icon.png';
+import pcratchIoTInsetIconURL from './inset-icon.svg';
+import pcratchIoTConnectionIconURL from './connection-icon.svg';
+import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 import translations from './translations.json';
 
 const version = 'v0.0.1';
@@ -17,19 +17,19 @@ const entry = {
         return `${formatMessage({
             defaultMessage: 'Pcratch IoT extension',
             description: 'Name of this extension',
-            id: 'piotExt.entry.name'
+            id: 'pcratchIoT.entry.name'
         })} (${version})`;
     },
-    extensionId: 'piotExt',
-    extensionURL: 'https://jcodeorg.github.io/pcratch-iot-ext/dist/piotext.mjs',
+    extensionId: 'pcratchIoT',
+    extensionURL: 'https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs',
     collaborator: 'Programing Education Lab',
-    iconURL: piotExtIconURL,
-    insetIconURL: piotExtInsetIconURL,
+    iconURL: pcratchIoTIconURL,
+    insetIconURL: pcratchIoTInsetIconURL,
     get description () {
         return formatMessage({
             defaultMessage: 'Play with all functions of Pcratch IoT.',
             description: "Description for the 'Pcratch Iot' extension",
-            id: 'piotExt.entry.description'
+            id: 'pcratchIoT.entry.description'
         });
     },
     featured: true,
@@ -38,13 +38,13 @@ const entry = {
     internetConnectionRequired: false,
     launchPeripheralConnectionFlow: true,
     useAutoScan: false,
-    connectionIconURL: piotExtConnectionIconURL,
-    connectionSmallIconURL: piotExtConnectionSmallIconURL,
+    connectionIconURL: pcratchIoTConnectionIconURL,
+    connectionSmallIconURL: pcratchIoTConnectionSmallIconURL,
     get connectingMessage () {
         return formatMessage({
             defaultMessage: 'Connecting',
             description: 'Message to help people connect to their Pcratch IoT.',
-            id: 'gui.extension.piotExt.connectingMessage'
+            id: 'gui.extension.pcratchIoT.connectingMessage'
         });
     },
     helpLink: 'https://jcodeorg.github.io/pcratch-iot-ext/',
