@@ -5,7 +5,7 @@ import Cast from '../../util/cast';
 import blockIcon from './block-icon.png';
 import translations from './translations.json';
 
-import {pcratchIoT} from './microbit-more';
+import {PcratchIoT} from './microbit-more';
 
 let formatMessage = messageData => messageData.defaultMessage;
 
@@ -723,7 +723,7 @@ class pcratchIoTBlocks {
             formatMessage = runtime.formatMessage;
         }
         // Create a new MicroBit peripheral instance
-        this.microbit = new pcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
+        this.microbit = new PcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
 
         /**
          * The previous timestamps of button events.
