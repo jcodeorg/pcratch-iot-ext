@@ -15,7 +15,7 @@ const version = 'v0.1.1';
 const entry = {
     get name () {
         return `${formatMessage({
-            defaultMessage: 'pcratch IoT',
+            defaultMessage: 'MicroBit More',
             description: 'Name of this extension',
             id: 'pcratchIoT.entry.name'
         })} (${version})`;
@@ -27,9 +27,9 @@ const entry = {
     insetIconURL: pcratchIoTInsetIconURL,
     get description () {
         return formatMessage({
-            defaultMessage: 'Play with all functions of Pcratch IoT.',
-            description: "Description for the 'Pcratch Iot' extension",
-            id: 'pcratchIoT.entry.description'
+            defaultMessage: 'Play with all functions of micro:bit.',
+            description: "Description for the 'Microbit More' extension",
+            id: 'mbitMore.entry.description'
         });
     },
     featured: true,
@@ -43,11 +43,11 @@ const entry = {
     get connectingMessage () {
         return formatMessage({
             defaultMessage: 'Connecting',
-            description: 'Message to help people connect to their Pcratch IoT.',
-            id: 'gui.extension.pcratchIoT.connectingMessage'
+            description: 'Message to help people connect to their micro:bit.',
+            id: 'gui.extension.microbit.connectingMessage'
         });
     },
-    helpLink: 'https://jcodeorg.github.io/pcratch-iot-ext/',
+    helpLink: 'https://microbit-more.github.io/',
     translationMap: translations
 };
 
