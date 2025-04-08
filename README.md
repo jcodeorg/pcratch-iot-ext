@@ -1,3 +1,10 @@
+# 更新手順
+
+# pcratchIoT.mjs の BUILDして
+cp ./dist/pcratchIoT.mjs ../../kitaratch/kitaratch-website/scripts/
+# kitaratch.github.io を更新・再起動
+
+
 <h1 align="center">MicroBit More v2</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.2.5-blue.svg?cacheSeconds=2592000" />

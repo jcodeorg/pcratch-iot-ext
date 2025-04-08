@@ -31,7 +31,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v0.1.3';
+var version = 'v0.1.7';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
