@@ -31,7 +31,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v0.1.8';
+var version = 'v0.1.9';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -794,7 +794,7 @@ var de = {
 	"pcratch_iot.acceleration": "Beschleunigung mg [AXIS]",
 	"pcratch_iot.pitch": "Pitch",
 	"pcratch_iot.roll": "Roll",
-	"pcratch_iot.soundLevel": "Lautstärke",
+	"pcratch_iot.humidity": "Lautstärke",
 	"pcratch_iot.analogValue": "analoger Wert von Pin [PIN]",
 	"pcratch_iot.setPullMode": "setze Eingang [PIN] auf [MODE]",
 	"pcratch_iot.setDigitalOut": "setze digitalen Ausgang [PIN] auf [LEVEL]",
@@ -882,7 +882,7 @@ var ja = {
 	"pcratch_iot.acceleration": "加速度 [AXIS]",
 	"pcratch_iot.pitch": "ピッチ",
 	"pcratch_iot.roll": "ロール",
-	"pcratch_iot.soundLevel": "湿度",
+	"pcratch_iot.humidity": "湿度",
 	"pcratch_iot.analogValue": "ピン [PIN] のアナログレベル",
 	"pcratch_iot.setPullMode": "ピン [PIN] を [MODE] 入力にする",
 	"pcratch_iot.setDigitalOut": "ピン [PIN] に [LEVEL] を出力する",
@@ -945,7 +945,7 @@ var translations = {
 	de: de,
 	ja: ja,
 	"ja-Hira": {
-	"pcratch_iot.name": "Pcratch IoT",
+	"pcratch_iot.name": "ぷくらっちIoT",
 	"pcratch_iot.whenButtonEvent": "[NAME] ボタンが [EVENT] とき",
 	"pcratch_iot.buttonIDMenu.a": "A",
 	"pcratch_iot.buttonIDMenu.b": "B",
@@ -980,7 +980,7 @@ var translations = {
 	"pcratch_iot.displayMatrix": "パターン [MATRIX] をひょうじする",
 	"pcratch_iot.displayText": "もじ [TEXT] を [DELAY] ミリびょうかんかくでながす",
 	"pcratch_iot.clearDisplay": "がめんをけす",
-	"pcratch_iot.isPinHigh": "ピン [PIN] がハイである",
+	"pcratch_iot.isPinHigh": "ピン [PIN] が 1 である",
 	"pcratch_iot.lightLevel": "あかるさ",
 	"pcratch_iot.temperature": "おんど",
 	"pcratch_iot.compassHeading": "きたからのかくど",
@@ -988,16 +988,16 @@ var translations = {
 	"pcratch_iot.acceleration": "かそくど [AXIS]",
 	"pcratch_iot.pitch": "ピッチ",
 	"pcratch_iot.roll": "ロール",
-	"pcratch_iot.soundLevel": "おとのおおきさ",
+	"pcratch_iot.humidity": "しつど",
 	"pcratch_iot.analogValue": "ピン [PIN] のアナログレベル",
 	"pcratch_iot.setPullMode": "ピン [PIN] を [MODE] にゅうりょくにする",
 	"pcratch_iot.setDigitalOut": "ピン [PIN] をデジタルしゅつりょく [LEVEL] にする",
-	"pcratch_iot.setAnalogOut": "ピン [PIN] をアナログしゅつりょく [LEVEL] パーセントにする",
+	"pcratch_iot.setAnalogOut": "ピン [PIN] をPWMしゅつりょく [LEVEL] パーセントにする",
 	"pcratch_iot.playTone": "[FREQ] ヘルツのおとを [VOL] パーセントの大きさで鳴らす",
 	"pcratch_iot.stopTone": "おとをとめる",
 	"pcratch_iot.setServo": "ピン [PIN] をサーボ [ANGLE] どにする",
-	"pcratch_iot.digitalValueMenu.Low": "ロー",
-	"pcratch_iot.digitalValueMenu.High": "ハイ",
+	"pcratch_iot.digitalValueMenu.Low": "0",
+	"pcratch_iot.digitalValueMenu.High": "1",
 	"pcratch_iot.axisMenu.x": "x",
 	"pcratch_iot.axisMenu.y": "y",
 	"pcratch_iot.axisMenu.z": "z",
@@ -4799,8 +4799,8 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       // Replace 'formatMessage' to a formatter which is used in the runtime.
       formatMessage = runtime.formatMessage;
     }
-    // Create a new MicroBit peripheral instance
-    this.microbit = new PcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
+    // Create a new MicroBit peripheral instance _pcratch
+    this._pcratch = new PcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
 
     /**
      * The previous timestamps of button events.
@@ -4841,77 +4841,77 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.tiltUp',
           default: 'titl up',
-          description: 'label for tilt up gesture in gesture picker for microbit more extension'
+          description: 'label for tilt up gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.TILT_UP
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.tiltDown',
           default: 'titl down',
-          description: 'label for tilt down gesture in gesture picker for microbit more extension'
+          description: 'label for tilt down gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.TILT_DOWN
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.tiltLeft',
           default: 'titl left',
-          description: 'label for tilt left gesture in gesture picker for microbit more extension'
+          description: 'label for tilt left gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.TILT_LEFT
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.tiltRight',
           default: 'titl right',
-          description: 'label for tilt right gesture in gesture picker for microbit more extension'
+          description: 'label for tilt right gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.TILT_RIGHT
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.faceUp',
           default: 'face up',
-          description: 'label for face up gesture in gesture picker for microbit more extension'
+          description: 'label for face up gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.FACE_UP
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.faceDown',
           default: 'face down',
-          description: 'label for face down gesture in gesture picker for microbit more extension'
+          description: 'label for face down gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.FACE_DOWN
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.freefall',
           default: 'freefall',
-          description: 'label for freefall gesture in gesture picker for microbit more extension'
+          description: 'label for freefall gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.FREEFALL
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.g3',
           default: '3G',
-          description: 'label for 3G gesture in gesture picker for microbit more extension'
+          description: 'label for 3G gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.G3
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.g6',
           default: '6G',
-          description: 'label for 6G gesture in gesture picker for microbit more extension'
+          description: 'label for 6G gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.G6
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.g8',
           default: '8G',
-          description: 'label for 3G gesture in gesture picker for microbit more extension'
+          description: 'label for 3G gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.G8
       }, {
         text: formatMessage({
           id: 'pcratch_iot.gesturesMenu.shake',
           default: 'shake',
-          description: 'label for shaken gesture in gesture picker for microbit more extension'
+          description: 'label for shaken gesture in gesture picker for Pcratch IoT extension'
         }),
         value: pcratchiot_GestureName.SHAKE
       }];
@@ -4927,14 +4927,14 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'pcratch_iot.buttonIDMenu.a',
           default: 'A',
-          description: 'label for "A" element in button picker for Microbit More extension'
+          description: 'label for "A" element in button picker for Pcratch IoT extension'
         }),
         value: pcratchiot_ButtonName.A
       }, {
         text: formatMessage({
           id: 'pcratch_iot.buttonIDMenu.b',
           default: 'B',
-          description: 'label for "B" element in button picker for Microbit More extension'
+          description: 'label for "B" element in button picker for Pcratch IoT extension'
         }),
         value: pcratchiot_ButtonName.B
       }];
@@ -5005,7 +5005,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'pcratch_iot.touchIDMenu.logo',
           default: 'LOGO',
-          description: 'label for "LOGO" element in touch button picker for Microbit More extension'
+          description: 'label for "LOGO" element in touch button picker for Pcratch IoT extension'
         }),
         value: pcratchiot_ButtonName.LOGO
       }, {
@@ -5077,7 +5077,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "ANALOG_IN_PINS_MENU",
     get: function get() {
-      return this.microbit.analogIn.map(function (pinIndex) {
+      return this._pcratch.analogIn.map(function (pinIndex) {
         return Object.create({
           text: "P".concat(pinIndex.toString()),
           value: pinIndex.toString()
@@ -5087,7 +5087,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "GPIO_MENU",
     get: function get() {
-      return this.microbit.gpio.map(function (pinIndex) {
+      return this._pcratch.gpio.map(function (pinIndex) {
         return Object.create({
           text: "P".concat(pinIndex.toString()),
           value: pinIndex.toString()
@@ -5101,14 +5101,14 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'pcratch_iot.digitalValueMenu.Low',
           default: 'Low',
-          description: 'label for low value in digital output menu for microbit more extension'
+          description: 'label for low value in digital output menu for Pcratch IoT extension'
         }),
         value: 'false'
       }, {
         text: formatMessage({
           id: 'pcratch_iot.digitalValueMenu.High',
           default: 'High',
-          description: 'label for high value in digital output menu for microbit more extension'
+          description: 'label for high value in digital output menu for Pcratch IoT extension'
         }),
         value: 'true'
       }];
@@ -5512,12 +5512,21 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
             }),
             blockType: BlockType.REPORTER
         },
+        {
+            opcode: 'getSoundLevel',
+            text: formatMessage({
+                id: 'pcratch_iot.soundLevel',
+                default: 'humidity',
+                description: 'level of the sound from microphone on Pcratch IoT'
+            }),
+            blockType: BlockType.REPORTER
+        },
         */
         // getSoundLevel は、湿度として利用します
         {
-          opcode: 'getSoundLevel',
+          opcode: 'getHumidity',
           text: formatMessage({
-            id: 'pcratch_iot.soundLevel',
+            id: 'pcratch_iot.humidity',
             default: 'humidity',
             description: 'level of the sound from microphone on Pcratch IoT'
           }),
@@ -5933,7 +5942,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     value: function updatePrevButtonEvents() {
       var _this = this;
       this.prevButtonEvents = {};
-      Object.entries(this.microbit.buttonEvents).forEach(function (_ref) {
+      Object.entries(this._pcratch.buttonEvents).forEach(function (_ref) {
         var _ref2 = _slicedToArray(_ref, 2),
           componentID = _ref2[0],
           events = _ref2[1];
@@ -5966,7 +5975,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       }
       var buttonName = args.NAME;
       var eventName = args.EVENT;
-      var lastTimestamp = this.microbit.getButtonEventTimestamp(buttonName, eventName);
+      var lastTimestamp = this._pcratch.getButtonEventTimestamp(buttonName, eventName);
       if (lastTimestamp === null) return false;
       if (!this.prevButtonEvents[buttonName]) return true;
       return lastTimestamp !== this.prevButtonEvents[buttonName][eventName];
@@ -5983,7 +5992,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     key: "isButtonPressed",
     value: function isButtonPressed(args) {
       var buttonName = args.NAME;
-      return this.microbit.isButtonPressed(buttonName);
+      return this._pcratch.isButtonPressed(buttonName);
     }
 
     /**
@@ -6002,10 +6011,10 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       if (buttonName === pcratchiot_ButtonName.LOGO) {
         return this.whenButtonEvent(args);
       }
-      if (this.microbit.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
+      if (this._pcratch.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
         return this.whenButtonEvent(args);
       }
-      var configPromise = this.microbit.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
+      var configPromise = this._pcratch.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
       if (!configPromise) return; // This thread was yielded.
       return configPromise.then(function () {
         return _this3.whenButtonEvent(args);
@@ -6025,15 +6034,15 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       var _this4 = this;
       var buttonName = args.NAME;
       if (buttonName === pcratchiot_ButtonName.LOGO) {
-        return this.microbit.isTouched(buttonName);
+        return this._pcratch.isTouched(buttonName);
       }
-      if (this.microbit.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
-        return this.microbit.isTouched(buttonName);
+      if (this._pcratch.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
+        return this._pcratch.isTouched(buttonName);
       }
-      var configPromise = this.microbit.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
+      var configPromise = this._pcratch.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
       if (!configPromise) return; // This thread was yielded.
       return configPromise.then(function () {
-        return _this4.microbit.isTouched(buttonName);
+        return _this4._pcratch.isTouched(buttonName);
       });
     }
 
@@ -6045,7 +6054,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     value: function updatePrevGestureEvents() {
       var _this5 = this;
       this.prevGestureEvents = {};
-      Object.entries(this.microbit.gestureEvents).forEach(function (_ref5) {
+      Object.entries(this._pcratch.gestureEvents).forEach(function (_ref5) {
         var _ref6 = _slicedToArray(_ref5, 2),
           gestureName = _ref6[0],
           timestamp = _ref6[1];
@@ -6070,7 +6079,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
         }, this.runtime.currentStepTime);
       }
       var gestureName = args.GESTURE;
-      var lastTimestamp = this.microbit.getGestureEventTimestamp(gestureName);
+      var lastTimestamp = this._pcratch.getGestureEventTimestamp(gestureName);
       if (lastTimestamp === null) return false;
       if (!this.prevGestureEvents[gestureName]) return true;
       return lastTimestamp !== this.prevGestureEvents[gestureName];
@@ -6113,7 +6122,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
           matrix[line][col] = matrixData[line * 5 + col];
         }
       }
-      return this.microbit.displayPixels(matrix, util);
+      return this._pcratch.displayPixels(matrix, util);
     }
 
     /**
@@ -6141,7 +6150,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       .replace(/　/g, ' ').replace(/〜/g, '~');
       var delay = parseInt(args.DELAY, 10);
       delay = isNaN(delay) ? 120 : delay; // Use default delay if NaN.
-      var resultPromise = this.microbit.displayText(text, delay, util);
+      var resultPromise = this._pcratch.displayText(text, delay, util);
       if (!resultPromise) return; // This thread was yielded.
       var yieldDelay = delay * (6 * text.length + 6);
       return new Promise(function (resolve) {
@@ -6161,7 +6170,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     key: "displayClear",
     value: function displayClear(args, util) {
       var matrix = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]];
-      return this.microbit.displayPixels(matrix, util);
+      return this._pcratch.displayPixels(matrix, util);
     }
 
     /**
@@ -6173,7 +6182,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "isPinHigh",
     value: function isPinHigh(args) {
-      return this.microbit.isPinHigh(parseInt(args.PIN, 10));
+      return this._pcratch.isPinHigh(parseInt(args.PIN, 10));
     }
 
     /**
@@ -6184,7 +6193,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getLightLevel",
     value: function getLightLevel() {
-      var level = this.microbit.readLightLevel();
+      var level = this._pcratch.readLightLevel();
       return Math.round(level * 1000 / 255) / 10;
     }
 
@@ -6196,7 +6205,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getTemperature",
     value: function getTemperature() {
-      return this.microbit.readTemperature();
+      return this._pcratch.readTemperature();
     }
 
     /**
@@ -6206,14 +6215,14 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
      * @return {Promise} - a Promise that resolves digital input value of the pin or undefinde if yield.
      */
   }, {
-    key: "getSoundLevel",
-    value: function getSoundLevel(args, util) {
+    key: "getHumidity",
+    value: function getHumidity(args, util) {
       var _this7 = this;
-      var resultPromise = this.microbit.configMic(true, util);
+      var resultPromise = this._pcratch.configMic(true, util);
       if (!resultPromise) return; // This thread was yielded.
       return resultPromise.then(function (micState) {
         if (micState) {
-          return Math.round(_this7.microbit.readSoundLevel() * 1000 / 255) / 10;
+          return Math.round(_this7._pcratch.readSoundLevel() * 1000 / 255) / 10;
         }
         return 0;
       });
@@ -6226,7 +6235,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getCompassHeading",
     value: function getCompassHeading() {
-      return this.microbit.readCompassHeading();
+      return this._pcratch.readCompassHeading();
     }
 
     /**
@@ -6240,7 +6249,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     key: "getAnalogValue",
     value: function getAnalogValue(args, util) {
       var pinIndex = parseInt(args.PIN, 10);
-      var resultPromise = this.microbit.readAnalogIn(pinIndex, util);
+      var resultPromise = this._pcratch.readAnalogIn(pinIndex, util);
       if (!resultPromise) return;
       return resultPromise.then(function (level) {
         return Math.round(level * 100 * 10 / 1024) / 10;
@@ -6256,7 +6265,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getDigitalValue",
     value: function getDigitalValue(args) {
-      return this.microbit.readDigitalLevel(parseInt(args.PIN, 10));
+      return this._pcratch.readDigitalLevel(parseInt(args.PIN, 10));
     }
 
     /**
@@ -6273,7 +6282,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       if (args.LABEL.length <= 0) {
         return;
       }
-      return this.microbit.sendData(args.LABEL, args.DATA, util);
+      return this._pcratch.sendData(args.LABEL, args.DATA, util);
     }
 
     /**
@@ -6288,7 +6297,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "setPullMode",
     value: function setPullMode(args, util) {
-      return this.microbit.setPullMode(parseInt(args.PIN, 10), pcratchiot_PullModeID[args.MODE], util);
+      return this._pcratch.setPullMode(parseInt(args.PIN, 10), pcratchiot_PullModeID[args.MODE], util);
     }
 
     /**
@@ -6311,7 +6320,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
           level = num > 0;
         }
       }
-      return this.microbit.setPinOutput(parseInt(args.PIN, 10), level, util);
+      return this._pcratch.setPinOutput(parseInt(args.PIN, 10), level, util);
     }
 
     /**
@@ -6332,7 +6341,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       }
       percent = Math.max(0, Math.min(percent, 100));
       var level = Math.round(percent * 1024 / 100);
-      return this.microbit.setPinPWM(parseInt(args.PIN, 10), level, util);
+      return this._pcratch.setPinPWM(parseInt(args.PIN, 10), level, util);
     }
 
     /**
@@ -6356,7 +6365,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       // let center = parseInt(args.CENTER, 10);
       // if (isNaN(center)) range = 0;
       // center = Math.max(0, center);
-      return this.microbit.setPinServo(parseInt(args.PIN, 10), angle, null, null, util);
+      return this._pcratch.setPinServo(parseInt(args.PIN, 10), angle, null, null, util);
     }
 
     /**
@@ -6368,7 +6377,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getMagneticForce",
     value: function getMagneticForce(args) {
-      return this.microbit.readMagneticForce(args.AXIS);
+      return this._pcratch.readMagneticForce(args.AXIS);
     }
 
     /**
@@ -6380,7 +6389,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getAcceleration",
     value: function getAcceleration(args) {
-      return this.microbit.readAcceleration(args.AXIS);
+      return this._pcratch.readAcceleration(args.AXIS);
     }
 
     /**
@@ -6390,7 +6399,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getPitch",
     value: function getPitch() {
-      return this.microbit.readPitch();
+      return this._pcratch.readPitch();
     }
 
     /**
@@ -6400,7 +6409,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getRoll",
     value: function getRoll() {
-      return this.microbit.readRoll();
+      return this._pcratch.readRoll();
     }
 
     /**
@@ -6418,7 +6427,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       var frequency = parseFloat(args.FREQ);
       var volume = parseInt(args.VOL, 10);
       volume = Math.min(100, Math.max(0, volume));
-      return this.microbit.playTone(frequency, volume, util);
+      return this._pcratch.playTone(frequency, volume, util);
     }
 
     /**
@@ -6431,7 +6440,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "stopTone",
     value: function stopTone(args, util) {
-      return this.microbit.stopTone(util);
+      return this._pcratch.stopTone(util);
     }
 
     /**
@@ -6446,7 +6455,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "listenPinEventType",
     value: function listenPinEventType(args, util) {
-      return this.microbit.listenPinEventType(parseInt(args.PIN, 10), pcratchiot_PinEventType[args.EVENT_TYPE], util);
+      return this._pcratch.listenPinEventType(parseInt(args.PIN, 10), pcratchiot_PinEventType[args.EVENT_TYPE], util);
     }
 
     /**
@@ -6460,7 +6469,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getPinEventValue",
     value: function getPinEventValue(args) {
-      var value = this.microbit.getPinEventValue(parseInt(args.PIN, 10), pcratchiot_PinEvent[args.EVENT]);
+      var value = this._pcratch.getPinEventValue(parseInt(args.PIN, 10), pcratchiot_PinEvent[args.EVENT]);
       return value ? value : 0;
     }
 
@@ -6472,7 +6481,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     value: function updatePrevPinEvents() {
       var _this8 = this;
       this.prevPinEvents = {};
-      Object.entries(this.microbit._pinEvents).forEach(function (_ref7) {
+      Object.entries(this._pcratch._pinEvents).forEach(function (_ref7) {
         var _ref8 = _slicedToArray(_ref7, 2),
           pinIndex = _ref8[0],
           events = _ref8[1];
@@ -6526,7 +6535,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
       }
       var pinIndex = parseInt(args.PIN, 10);
       var eventID = pcratchiot_PinEvent[args.EVENT];
-      var lastTimestamp = this.microbit.getPinEventTimestamp(pinIndex, eventID);
+      var lastTimestamp = this._pcratch.getPinEventTimestamp(pinIndex, eventID);
       if (lastTimestamp === null) return false;
       var prevTimestamp = this.getPrevPinEventTimestamp(pinIndex, eventID);
       if (prevTimestamp === null) return true;
@@ -6542,7 +6551,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "getDataLabeled",
     value: function getDataLabeled(args) {
-      var data = this.microbit.getDataLabeled(args.LABEL);
+      var data = this._pcratch.getDataLabeled(args.LABEL);
       if (data === null) {
         return '';
       }
@@ -6557,7 +6566,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     value: function updatePrevReceivedData() {
       var _this10 = this;
       this.prevReceivedData = {};
-      Object.entries(this.microbit.receivedData).forEach(function (_ref13) {
+      Object.entries(this._pcratch.receivedData).forEach(function (_ref13) {
         var _ref14 = _slicedToArray(_ref13, 2),
           label = _ref14[0],
           contentObject = _ref14[1];
@@ -6602,7 +6611,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
         }, this.runtime.currentStepTime);
       }
       var label = args.LABEL;
-      var lastTimestamp = this.microbit.getDataTimestamp(label);
+      var lastTimestamp = this._pcratch.getDataTimestamp(label);
       if (lastTimestamp === null) return false;
       var prevTimestamp = this.getPrevReceivedDataTimestamp(label);
       if (prevTimestamp === null) return true;
@@ -6619,7 +6628,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
     key: "whenConnectionChanged",
     value: function whenConnectionChanged(args) {
       var state = args.STATE === 'connected';
-      return state === this.microbit.isConnected();
+      return state === this._pcratch.isConnected();
     }
 
     /**
@@ -6648,7 +6657,7 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "setNeoPixcelColor",
     value: function setNeoPixcelColor(args, util) {
-      return this.microbit.setNeoPixcelColor(args.N, args.COLOR, util);
+      return this._pcratch.setNeoPixcelColor(args.N, args.COLOR, util);
     }
   }], [{
     key: "formatMessage",

@@ -205,7 +205,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.tiltUp',
                     default: 'titl up',
-                    description: 'label for tilt up gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt up gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.TILT_UP
             },
@@ -213,7 +213,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.tiltDown',
                     default: 'titl down',
-                    description: 'label for tilt down gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt down gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.TILT_DOWN
             },
@@ -221,7 +221,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.tiltLeft',
                     default: 'titl left',
-                    description: 'label for tilt left gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt left gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.TILT_LEFT
             },
@@ -229,7 +229,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.tiltRight',
                     default: 'titl right',
-                    description: 'label for tilt right gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt right gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.TILT_RIGHT
             },
@@ -237,7 +237,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.faceUp',
                     default: 'face up',
-                    description: 'label for face up gesture in gesture picker for microbit more extension'
+                    description: 'label for face up gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.FACE_UP
             },
@@ -245,7 +245,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.faceDown',
                     default: 'face down',
-                    description: 'label for face down gesture in gesture picker for microbit more extension'
+                    description: 'label for face down gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.FACE_DOWN
             },
@@ -253,7 +253,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.freefall',
                     default: 'freefall',
-                    description: 'label for freefall gesture in gesture picker for microbit more extension'
+                    description: 'label for freefall gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.FREEFALL
             },
@@ -261,7 +261,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.g3',
                     default: '3G',
-                    description: 'label for 3G gesture in gesture picker for microbit more extension'
+                    description: 'label for 3G gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.G3
             },
@@ -269,7 +269,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.g6',
                     default: '6G',
-                    description: 'label for 6G gesture in gesture picker for microbit more extension'
+                    description: 'label for 6G gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.G6
             },
@@ -277,7 +277,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.g8',
                     default: '8G',
-                    description: 'label for 3G gesture in gesture picker for microbit more extension'
+                    description: 'label for 3G gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.G8
             },
@@ -285,7 +285,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.gesturesMenu.shake',
                     default: 'shake',
-                    description: 'label for shaken gesture in gesture picker for microbit more extension'
+                    description: 'label for shaken gesture in gesture picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_GestureName.SHAKE
             }
@@ -303,7 +303,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.buttonIDMenu.a',
                     default: 'A',
-                    description: 'label for "A" element in button picker for Microbit More extension'
+                    description: 'label for "A" element in button picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_ButtonName.A
             },
@@ -311,7 +311,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.buttonIDMenu.b',
                     default: 'B',
-                    description: 'label for "B" element in button picker for Microbit More extension'
+                    description: 'label for "B" element in button picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_ButtonName.B
             }
@@ -384,7 +384,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.touchIDMenu.logo',
                     default: 'LOGO',
-                    description: 'label for "LOGO" element in touch button picker for Microbit More extension'
+                    description: 'label for "LOGO" element in touch button picker for Pcratch IoT extension'
                 }),
                 value: pcratchiot_ButtonName.LOGO
             },
@@ -461,7 +461,7 @@ class pcratchIoTBlocks {
     }
 
     get ANALOG_IN_PINS_MENU () {
-        return this.microbit.analogIn.map(
+        return this._pcratch.analogIn.map(
             pinIndex =>
                 Object.create({
                     text: `P${pinIndex.toString()}`,
@@ -472,7 +472,7 @@ class pcratchIoTBlocks {
 
 
     get GPIO_MENU () {
-        return this.microbit.gpio.map(
+        return this._pcratch.gpio.map(
             pinIndex =>
                 Object.create({
                     text: `P${pinIndex.toString()}`,
@@ -487,7 +487,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.digitalValueMenu.Low',
                     default: 'Low',
-                    description: 'label for low value in digital output menu for microbit more extension'
+                    description: 'label for low value in digital output menu for Pcratch IoT extension'
                 }),
                 value: 'false'
             },
@@ -495,7 +495,7 @@ class pcratchIoTBlocks {
                 text: formatMessage({
                     id: 'pcratch_iot.digitalValueMenu.High',
                     default: 'High',
-                    description: 'label for high value in digital output menu for microbit more extension'
+                    description: 'label for high value in digital output menu for Pcratch IoT extension'
                 }),
                 value: 'true'
             }
@@ -722,8 +722,8 @@ class pcratchIoTBlocks {
             // Replace 'formatMessage' to a formatter which is used in the runtime.
             formatMessage = runtime.formatMessage;
         }
-        // Create a new MicroBit peripheral instance
-        this.microbit = new PcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
+        // Create a new MicroBit peripheral instance _pcratch
+        this._pcratch = new PcratchIoT(this.runtime, pcratchIoTBlocks.EXTENSION_ID);
 
         /**
          * The previous timestamps of button events.
@@ -963,12 +963,21 @@ class pcratchIoTBlocks {
                     }),
                     blockType: BlockType.REPORTER
                 },
-                */
-                // getSoundLevel は、湿度として利用します
                 {
                     opcode: 'getSoundLevel',
                     text: formatMessage({
                         id: 'pcratch_iot.soundLevel',
+                        default: 'humidity',
+                        description: 'level of the sound from microphone on Pcratch IoT'
+                    }),
+                    blockType: BlockType.REPORTER
+                },
+                */
+                // getSoundLevel は、湿度として利用します
+                {
+                    opcode: 'getHumidity',
+                    text: formatMessage({
+                        id: 'pcratch_iot.humidity',
                         default: 'humidity',
                         description: 'level of the sound from microphone on Pcratch IoT'
                     }),
@@ -1389,7 +1398,7 @@ class pcratchIoTBlocks {
      */
     updatePrevButtonEvents () {
         this.prevButtonEvents = {};
-        Object.entries(this.microbit.buttonEvents).forEach(([componentID, events]) => {
+        Object.entries(this._pcratch.buttonEvents).forEach(([componentID, events]) => {
             this.prevButtonEvents[componentID] = {};
             Object.entries(events).forEach(([eventName, timestamp]) => {
                 this.prevButtonEvents[componentID][eventName] = timestamp;
@@ -1414,7 +1423,7 @@ class pcratchIoTBlocks {
         const buttonName = args.NAME;
         const eventName = args.EVENT;
         const lastTimestamp =
-            this.microbit.getButtonEventTimestamp(buttonName, eventName);
+            this._pcratch.getButtonEventTimestamp(buttonName, eventName);
         if (lastTimestamp === null) return false;
         if (!this.prevButtonEvents[buttonName]) return true;
         return lastTimestamp !== this.prevButtonEvents[buttonName][eventName];
@@ -1429,7 +1438,7 @@ class pcratchIoTBlocks {
      */
     isButtonPressed (args) {
         const buttonName = args.NAME;
-        return this.microbit.isButtonPressed(buttonName);
+        return this._pcratch.isButtonPressed(buttonName);
     }
 
 
@@ -1446,10 +1455,10 @@ class pcratchIoTBlocks {
         if (buttonName === pcratchiot_ButtonName.LOGO) {
             return this.whenButtonEvent(args);
         }
-        if (this.microbit.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
+        if (this._pcratch.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
             return this.whenButtonEvent(args);
         }
-        const configPromise = this.microbit.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
+        const configPromise = this._pcratch.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
         if (!configPromise) return; // This thread was yielded.
         return configPromise.then(() => this.whenButtonEvent(args));
     }
@@ -1464,14 +1473,14 @@ class pcratchIoTBlocks {
     isPinTouched (args, util) {
         const buttonName = args.NAME;
         if (buttonName === pcratchiot_ButtonName.LOGO) {
-            return this.microbit.isTouched(buttonName);
+            return this._pcratch.isTouched(buttonName);
         }
-        if (this.microbit.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
-            return this.microbit.isTouched(buttonName);
+        if (this._pcratch.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
+            return this._pcratch.isTouched(buttonName);
         }
-        const configPromise = this.microbit.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
+        const configPromise = this._pcratch.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
         if (!configPromise) return; // This thread was yielded.
-        return configPromise.then(() => this.microbit.isTouched(buttonName));
+        return configPromise.then(() => this._pcratch.isTouched(buttonName));
     }
 
     /**
@@ -1479,7 +1488,7 @@ class pcratchIoTBlocks {
      */
     updatePrevGestureEvents () {
         this.prevGestureEvents = {};
-        Object.entries(this.microbit.gestureEvents).forEach(([gestureName, timestamp]) => {
+        Object.entries(this._pcratch.gestureEvents).forEach(([gestureName, timestamp]) => {
             this.prevGestureEvents[gestureName] = timestamp;
         });
     }
@@ -1499,7 +1508,7 @@ class pcratchIoTBlocks {
         }
         const gestureName = args.GESTURE;
         const lastTimestamp =
-            this.microbit.getGestureEventTimestamp(gestureName);
+            this._pcratch.getGestureEventTimestamp(gestureName);
         if (lastTimestamp === null) return false;
         if (!this.prevGestureEvents[gestureName]) return true;
         return lastTimestamp !== this.prevGestureEvents[gestureName];
@@ -1539,7 +1548,7 @@ class pcratchIoTBlocks {
                 matrix[line][col] = matrixData[(line * 5) + col];
             }
         }
-        return this.microbit.displayPixels(matrix, util);
+        return this._pcratch.displayPixels(matrix, util);
     }
 
     /**
@@ -1569,7 +1578,7 @@ class pcratchIoTBlocks {
             .replace(/〜/g, '~');
         let delay = parseInt(args.DELAY, 10);
         delay = isNaN(delay) ? 120 : delay; // Use default delay if NaN.
-        const resultPromise = this.microbit.displayText(text, delay, util);
+        const resultPromise = this._pcratch.displayText(text, delay, util);
         if (!resultPromise) return; // This thread was yielded.
         const yieldDelay = delay * ((6 * text.length) + 6);
         return new Promise(resolve => {
@@ -1593,7 +1602,7 @@ class pcratchIoTBlocks {
             [0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        return this.microbit.displayPixels(matrix, util);
+        return this._pcratch.displayPixels(matrix, util);
     }
 
     /**
@@ -1603,7 +1612,7 @@ class pcratchIoTBlocks {
      * @return {boolean} - true if the pin is high.
      */
     isPinHigh (args) {
-        return this.microbit.isPinHigh(parseInt(args.PIN, 10));
+        return this._pcratch.isPinHigh(parseInt(args.PIN, 10));
     }
 
     /**
@@ -1612,7 +1621,7 @@ class pcratchIoTBlocks {
      * @return {number} - light level.
      */
     getLightLevel () {
-        const level = this.microbit.readLightLevel();
+        const level = this._pcratch.readLightLevel();
         return Math.round(level * 1000 / 255) / 10;
     }
 
@@ -1622,7 +1631,7 @@ class pcratchIoTBlocks {
      * @return {number} - value of temperature [centigrade].
      */
     getTemperature () {
-        return this.microbit.readTemperature();
+        return this._pcratch.readTemperature();
     }
 
     /**
@@ -1631,13 +1640,13 @@ class pcratchIoTBlocks {
      * @param {object} util - utility object provided by the runtime.
      * @return {Promise} - a Promise that resolves digital input value of the pin or undefinde if yield.
      */
-    getSoundLevel (args, util) {
-        const resultPromise = this.microbit.configMic(true, util);
+    getHumidity (args, util) {
+        const resultPromise = this._pcratch.configMic(true, util);
         if (!resultPromise) return; // This thread was yielded.
         return resultPromise
             .then(micState => {
                 if (micState) {
-                    return Math.round(this.microbit.readSoundLevel() * 1000 / 255) / 10;
+                    return Math.round(this._pcratch.readSoundLevel() * 1000 / 255) / 10;
                 }
                 return 0;
             });
@@ -1648,7 +1657,7 @@ class pcratchIoTBlocks {
      * @return {number} - degree of compass heading angle from the north (0 - 359 degrees).
      */
     getCompassHeading () {
-        return this.microbit.readCompassHeading();
+        return this._pcratch.readCompassHeading();
     }
 
     /**
@@ -1660,7 +1669,7 @@ class pcratchIoTBlocks {
      */
     getAnalogValue (args, util) {
         const pinIndex = parseInt(args.PIN, 10);
-        const resultPromise = this.microbit.readAnalogIn(pinIndex, util);
+        const resultPromise = this._pcratch.readAnalogIn(pinIndex, util);
         if (!resultPromise) return;
         return resultPromise.then(level => Math.round(level * 100 * 10 / 1024) / 10);
     }
@@ -1672,7 +1681,7 @@ class pcratchIoTBlocks {
      * @return {number} - digital input value of the pin.
      */
     getDigitalValue (args) {
-        return this.microbit.readDigitalLevel(parseInt(args.PIN, 10));
+        return this._pcratch.readDigitalLevel(parseInt(args.PIN, 10));
     }
 
     /**
@@ -1687,7 +1696,7 @@ class pcratchIoTBlocks {
         if (args.LABEL.length <= 0) {
             return;
         }
-        return this.microbit.sendData(args.LABEL, args.DATA, util);
+        return this._pcratch.sendData(args.LABEL, args.DATA, util);
     }
 
     /**
@@ -1700,7 +1709,7 @@ class pcratchIoTBlocks {
      *                                 or undefined if this process was yield.
      */
     setPullMode (args, util) {
-        return this.microbit.setPullMode(parseInt(args.PIN, 10), pcratchiot_PullModeID[args.MODE], util);
+        return this._pcratch.setPullMode(parseInt(args.PIN, 10), pcratchiot_PullModeID[args.MODE], util);
     }
 
     /**
@@ -1721,7 +1730,7 @@ class pcratchIoTBlocks {
                 level = (num > 0);
             }
         }
-        return this.microbit.setPinOutput(parseInt(args.PIN, 10), level, util);
+        return this._pcratch.setPinOutput(parseInt(args.PIN, 10), level, util);
     }
 
     /**
@@ -1740,7 +1749,7 @@ class pcratchIoTBlocks {
         }
         percent = Math.max(0, Math.min(percent, 100));
         const level = Math.round(percent * 1024 / 100);
-        return this.microbit.setPinPWM(
+        return this._pcratch.setPinPWM(
             parseInt(args.PIN, 10),
             level,
             util
@@ -1766,7 +1775,7 @@ class pcratchIoTBlocks {
         // let center = parseInt(args.CENTER, 10);
         // if (isNaN(center)) range = 0;
         // center = Math.max(0, center);
-        return this.microbit.setPinServo(parseInt(args.PIN, 10), angle, null, null, util);
+        return this._pcratch.setPinServo(parseInt(args.PIN, 10), angle, null, null, util);
     }
 
     /**
@@ -1776,7 +1785,7 @@ class pcratchIoTBlocks {
      * @return {number} - value of magnetic force.
      */
     getMagneticForce (args) {
-        return this.microbit.readMagneticForce(args.AXIS);
+        return this._pcratch.readMagneticForce(args.AXIS);
     }
 
     /**
@@ -1786,7 +1795,7 @@ class pcratchIoTBlocks {
      * @return {number} - value of acceleration.
      */
     getAcceleration (args) {
-        return this.microbit.readAcceleration(args.AXIS);
+        return this._pcratch.readAcceleration(args.AXIS);
     }
 
     /**
@@ -1794,7 +1803,7 @@ class pcratchIoTBlocks {
      * @return {number} - degree of pitch.
      */
     getPitch () {
-        return this.microbit.readPitch();
+        return this._pcratch.readPitch();
     }
 
     /**
@@ -1802,7 +1811,7 @@ class pcratchIoTBlocks {
      * @return {number} - degree of roll.
      */
     getRoll () {
-        return this.microbit.readRoll();
+        return this._pcratch.readRoll();
     }
 
 
@@ -1819,7 +1828,7 @@ class pcratchIoTBlocks {
         const frequency = parseFloat(args.FREQ);
         let volume = parseInt(args.VOL, 10);
         volume = Math.min(100, (Math.max(0, volume)));
-        return this.microbit.playTone(frequency, volume, util);
+        return this._pcratch.playTone(frequency, volume, util);
     }
 
     /**
@@ -1830,7 +1839,7 @@ class pcratchIoTBlocks {
      *                                 or undefined if this process was yield.
      */
     stopTone (args, util) {
-        return this.microbit.stopTone(util);
+        return this._pcratch.stopTone(util);
     }
 
     /**
@@ -1843,7 +1852,7 @@ class pcratchIoTBlocks {
      *                                 or undefined if this process was yield.
     */
     listenPinEventType (args, util) {
-        return this.microbit.listenPinEventType(parseInt(args.PIN, 10), pcratchiot_PinEventType[args.EVENT_TYPE], util);
+        return this._pcratch.listenPinEventType(parseInt(args.PIN, 10), pcratchiot_PinEventType[args.EVENT_TYPE], util);
     }
 
     /**
@@ -1855,7 +1864,7 @@ class pcratchIoTBlocks {
      * @return {number} - timestamp of the event or 0.
      */
     getPinEventValue (args) {
-        const value = this.microbit.getPinEventValue(parseInt(args.PIN, 10), pcratchiot_PinEvent[args.EVENT]);
+        const value = this._pcratch.getPinEventValue(parseInt(args.PIN, 10), pcratchiot_PinEvent[args.EVENT]);
         return value ? value : 0;
     }
 
@@ -1864,7 +1873,7 @@ class pcratchIoTBlocks {
      */
     updatePrevPinEvents () {
         this.prevPinEvents = {};
-        Object.entries(this.microbit._pinEvents).forEach(([pinIndex, events]) => {
+        Object.entries(this._pcratch._pinEvents).forEach(([pinIndex, events]) => {
             this.prevPinEvents[pinIndex] = {};
             Object.entries(events).forEach(([eventID, eventData]) => {
                 this.prevPinEvents[pinIndex][eventID] = {};
@@ -1905,7 +1914,7 @@ class pcratchIoTBlocks {
         const pinIndex = parseInt(args.PIN, 10);
         const eventID = pcratchiot_PinEvent[args.EVENT];
         const lastTimestamp =
-            this.microbit.getPinEventTimestamp(pinIndex, eventID);
+            this._pcratch.getPinEventTimestamp(pinIndex, eventID);
         if (lastTimestamp === null) return false;
         const prevTimestamp = this.getPrevPinEventTimestamp(pinIndex, eventID);
         if (prevTimestamp === null) return true;
@@ -1919,7 +1928,7 @@ class pcratchIoTBlocks {
      * @return {?(string | number)} - content of the data or empty string when the data was null
      */
     getDataLabeled (args) {
-        const data = this.microbit.getDataLabeled(args.LABEL);
+        const data = this._pcratch.getDataLabeled(args.LABEL);
         if (data === null) {
             return '';
         }
@@ -1931,7 +1940,7 @@ class pcratchIoTBlocks {
      */
     updatePrevReceivedData () {
         this.prevReceivedData = {};
-        Object.entries(this.microbit.receivedData).forEach(([label, contentObject]) => {
+        Object.entries(this._pcratch.receivedData).forEach(([label, contentObject]) => {
             this.prevReceivedData[label] = {};
             Object.entries(contentObject).forEach(([key, value]) => {
                 this.prevReceivedData[label][key] = value;
@@ -1966,7 +1975,7 @@ class pcratchIoTBlocks {
         }
         const label = args.LABEL;
         const lastTimestamp =
-            this.microbit.getDataTimestamp(label);
+            this._pcratch.getDataTimestamp(label);
         if (lastTimestamp === null) return false;
         const prevTimestamp = this.getPrevReceivedDataTimestamp(label);
         if (prevTimestamp === null) return true;
@@ -1981,7 +1990,7 @@ class pcratchIoTBlocks {
      */
     whenConnectionChanged (args) {
         const state = (args.STATE === 'connected');
-        return (state === this.microbit.isConnected());
+        return (state === this._pcratch.isConnected());
     }
 
     /**
@@ -2006,7 +2015,7 @@ class pcratchIoTBlocks {
      * @property {string} args.COLOR - Comma-separated RGB string.
      */
     setNeoPixcelColor (args, util) {
-        return this.microbit.setNeoPixcelColor(args.N, args.COLOR, util);
+        return this._pcratch.setNeoPixcelColor(args.N, args.COLOR, util);
     }
     
 }
