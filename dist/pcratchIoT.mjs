@@ -826,12 +826,12 @@ var de = {
 	"mbitMore.pinEventTimestampMenu.fall": "Abfallen",
 	"mbitMore.pinEventTimestampMenu.pulseHigh": "Impuls hoch",
 	"mbitMore.pinEventTimestampMenu.pulseLow": "Impuls tief",
-	"mbitMore.whenDataReceived": "Wenn Daten mit dem Label [LABEL] vom micro:bit empfangen werden",
+	"mbitMore.whenDataReceived": "Wenn Daten mit dem Label [LABEL] vom Pcratch IoT empfangen werden",
 	"mbitMore.getDataLabeled": "Daten mit dem Label [LABEL]",
-	"mbitMore.sendData": "sende Daten [DATA] mit dem Label [LABEL] zum micro:bit",
+	"mbitMore.sendData": "sende Daten [DATA] mit dem Label [LABEL] zum Pcratch IoT",
 	"mbitMore.connectionStateMenu.connected": "verbunden",
 	"mbitMore.connectionStateMenu.disconnected": "getrennt",
-	"mbitMore.whenConnectionChanged": "Wenn micro:bit [STATE] ist",
+	"mbitMore.whenConnectionChanged": "Wenn Pcratch IoT [STATE] ist",
 	"mbitMore.selectCommunicationRoute.connectWith": "verbinden mit",
 	"mbitMore.selectCommunicationRoute.bluetooth": "Bluetooth",
 	"mbitMore.selectCommunicationRoute.usb": "USB",
@@ -914,12 +914,12 @@ var ja = {
 	"mbitMore.pinEventTimestampMenu.fall": "フォールの時刻",
 	"mbitMore.pinEventTimestampMenu.pulseHigh": "ハイパルスの期間",
 	"mbitMore.pinEventTimestampMenu.pulseLow": "ローパルスの期間",
-	"mbitMore.whenDataReceived": "micro:bit からラベル [LABEL] のデータを受け取ったとき",
+	"mbitMore.whenDataReceived": "Pcratch IoT からラベル [LABEL] のデータを受け取ったとき",
 	"mbitMore.getDataLabeled": "ラベル [LABEL] のデータ",
-	"mbitMore.sendData": "micro:bit へデータ [DATA] にラベル [LABEL] を付けて送る",
+	"mbitMore.sendData": "Pcratch IoT へデータ [DATA] にラベル [LABEL] を付けて送る",
 	"mbitMore.connectionStateMenu.connected": "つながった",
 	"mbitMore.connectionStateMenu.disconnected": "切れた",
-	"mbitMore.whenConnectionChanged": "micro:bit と[STATE]とき",
+	"mbitMore.whenConnectionChanged": "Pcratch IoT と[STATE]とき",
 	"mbitMore.selectCommunicationRoute.connectWith": "つなぎ方",
 	"mbitMore.selectCommunicationRoute.bluetooth": "Bluetooth",
 	"mbitMore.selectCommunicationRoute.usb": "USB",
@@ -1020,12 +1020,12 @@ var translations = {
 	"mbitMore.pinEventTimestampMenu.fall": "フォールのじかん",
 	"mbitMore.pinEventTimestampMenu.pulseHigh": "ハイパルスのきかん",
 	"mbitMore.pinEventTimestampMenu.pulseLow": "ローパルスのきかん",
-	"mbitMore.whenDataReceived": "micro:bit からラベル [LABEL] のデータをうけとったとき",
+	"mbitMore.whenDataReceived": "Pcratch IoT からラベル [LABEL] のデータをうけとったとき",
 	"mbitMore.getDataLabeled": "ラベル [LABEL] のデータ",
-	"mbitMore.sendData": "micro:bit へデータ [DATA] にラベル [LABEL] をつけておくる",
+	"mbitMore.sendData": "Pcratch IoT へデータ [DATA] にラベル [LABEL] をつけておくる",
 	"mbitMore.connectionStateMenu.connected": "つながった",
 	"mbitMore.connectionStateMenu.disconnected": "きれた",
-	"mbitMore.whenConnectionChanged": "micro:bit と[STATE]とき",
+	"mbitMore.whenConnectionChanged": "Pcratch IoT と[STATE]とき",
 	"mbitMore.selectCommunicationRoute.connectWith": "つなぎかた",
 	"mbitMore.selectCommunicationRoute.bluetooth": "むせん",
 	"mbitMore.selectCommunicationRoute.usb": "ゆうせん",
@@ -5326,124 +5326,136 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
               defaultValue: 'connected'
             }
           }
-        }, '---', {
-          opcode: 'whenButtonEvent',
-          text: formatMessage({
-            id: 'mbitMore.whenButtonEvent',
-            default: 'when button [NAME] is [EVENT]',
-            description: 'when the selected button on the micro:bit get the selected event'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            NAME: {
-              type: argumentType.STRING,
-              menu: 'buttonIDMenu',
-              defaultValue: MbitMoreButtonName.A
-            },
-            EVENT: {
-              type: argumentType.STRING,
-              menu: 'buttonEventMenu',
-              defaultValue: MbitMoreButtonEventName.DOWN
+        }, '---',
+        /*
+        {
+            opcode: 'whenButtonEvent',
+            text: formatMessage({
+                id: 'mbitMore.whenButtonEvent',
+                default: 'when button [NAME] is [EVENT]',
+                description: 'when the selected button on the micro:bit get the selected event'
+            }),
+            blockType: BlockType.HAT,
+            arguments: {
+                NAME: {
+                    type: ArgumentType.STRING,
+                    menu: 'buttonIDMenu',
+                    defaultValue: MbitMoreButtonName.A
+                },
+                EVENT: {
+                    type: ArgumentType.STRING,
+                    menu: 'buttonEventMenu',
+                    defaultValue: MbitMoreButtonEventName.DOWN
+                }
             }
-          }
-        }, {
-          opcode: 'isButtonPressed',
-          text: formatMessage({
-            id: 'mbitMore.isButtonPressed',
-            default: 'button [NAME] pressed?',
-            description: 'is the selected button on the micro:bit pressed?'
-          }),
-          blockType: blockType.BOOLEAN,
-          arguments: {
-            NAME: {
-              type: argumentType.STRING,
-              menu: 'buttonIDMenu',
-              defaultValue: MbitMoreButtonName.A
+        },
+        {
+            opcode: 'isButtonPressed',
+            text: formatMessage({
+                id: 'mbitMore.isButtonPressed',
+                default: 'button [NAME] pressed?',
+                description: 'is the selected button on the micro:bit pressed?'
+            }),
+            blockType: BlockType.BOOLEAN,
+            arguments: {
+                NAME: {
+                    type: ArgumentType.STRING,
+                    menu: 'buttonIDMenu',
+                    defaultValue: MbitMoreButtonName.A
+                }
             }
-          }
-        }, {
-          opcode: 'whenTouchEvent',
-          text: formatMessage({
-            id: 'mbitMore.whenTouchEvent',
-            default: 'when pin [NAME] is [EVENT]',
-            description: 'when the selected touch pin on the micro:bit is touched'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            NAME: {
-              type: argumentType.STRING,
-              menu: 'touchIDMenu',
-              defaultValue: MbitMoreButtonName.LOGO
-            },
-            EVENT: {
-              type: argumentType.STRING,
-              menu: 'touchEventMenu',
-              defaultValue: MbitMoreButtonEventName.DOWN
+        },
+        {
+            opcode: 'whenTouchEvent',
+            text: formatMessage({
+                id: 'mbitMore.whenTouchEvent',
+                default: 'when pin [NAME] is [EVENT]',
+                description: 'when the selected touch pin on the micro:bit is touched'
+            }),
+            blockType: BlockType.HAT,
+            arguments: {
+                NAME: {
+                    type: ArgumentType.STRING,
+                    menu: 'touchIDMenu',
+                    defaultValue: MbitMoreButtonName.LOGO
+                },
+                EVENT: {
+                    type: ArgumentType.STRING,
+                    menu: 'touchEventMenu',
+                    defaultValue: MbitMoreButtonEventName.DOWN
+                }
             }
-          }
-        }, {
-          opcode: 'isPinTouched',
-          text: formatMessage({
-            id: 'mbitMore.isPinTouched',
-            default: 'pin [NAME] is touched?',
-            description: 'is the selected pin is touched?'
-          }),
-          blockType: blockType.BOOLEAN,
-          arguments: {
-            NAME: {
-              type: argumentType.STRING,
-              menu: 'touchIDMenu',
-              defaultValue: MbitMoreButtonName.LOGO
+        },
+        {
+            opcode: 'isPinTouched',
+            text: formatMessage({
+                id: 'mbitMore.isPinTouched',
+                default: 'pin [NAME] is touched?',
+                description: 'is the selected pin is touched?'
+            }),
+            blockType: BlockType.BOOLEAN,
+            arguments: {
+                NAME: {
+                    type: ArgumentType.STRING,
+                    menu: 'touchIDMenu',
+                    defaultValue: MbitMoreButtonName.LOGO
+                }
             }
-          }
-        }, '---', {
-          opcode: 'whenGesture',
-          text: formatMessage({
-            id: 'mbitMore.whenGesture',
-            default: 'when [GESTURE]',
-            description: 'when the selected gesture is detected by the micro:bit'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            GESTURE: {
-              type: argumentType.STRING,
-              menu: 'gestures',
-              defaultValue: MbitMoreGestureName.SHAKE
+        },
+        '---',
+        {
+            opcode: 'whenGesture',
+            text: formatMessage({
+                id: 'mbitMore.whenGesture',
+                default: 'when [GESTURE]',
+                description: 'when the selected gesture is detected by the micro:bit'
+            }),
+            blockType: BlockType.HAT,
+            arguments: {
+                GESTURE: {
+                    type: ArgumentType.STRING,
+                    menu: 'gestures',
+                    defaultValue: MbitMoreGestureName.SHAKE
+                }
             }
-          }
-        }, '---', {
-          opcode: 'displayMatrix',
-          text: formatMessage({
-            id: 'mbitMore.displayMatrix',
-            default: 'display pattern [MATRIX] ',
-            description: 'display a pattern on the micro:bit display'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            MATRIX: {
-              type: argumentType.MATRIX,
-              defaultValue: '0101010101100010101000100'
+        },
+        '---',
+        {
+            opcode: 'displayMatrix',
+            text: formatMessage({
+                id: 'mbitMore.displayMatrix',
+                default: 'display pattern [MATRIX] ',
+                description: 'display a pattern on the micro:bit display'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+                MATRIX: {
+                    type: ArgumentType.MATRIX,
+                    defaultValue: '0101010101100010101000100'
+                }
             }
-          }
-        }, {
-          opcode: 'displayText',
-          text: formatMessage({
-            id: 'mbitMore.displayText',
-            default: 'display text [TEXT] delay [DELAY] ms',
-            description: 'display text on the micro:bit display'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            TEXT: {
-              type: argumentType.STRING,
-              defaultValue: 'Hello!'
-            },
-            DELAY: {
-              type: argumentType.NUMBER,
-              defaultValue: 120
+        },
+        {
+            opcode: 'displayText',
+            text: formatMessage({
+                id: 'mbitMore.displayText',
+                default: 'display text [TEXT] delay [DELAY] ms',
+                description: 'display text on the micro:bit display'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+                TEXT: {
+                    type: ArgumentType.STRING,
+                    defaultValue: 'Hello!'
+                },
+                DELAY: {
+                    type: ArgumentType.NUMBER,
+                    defaultValue: 120
+                }
             }
-          }
-        }, {
+        },
+        */
+        {
           opcode: 'displayClear',
           text: formatMessage({
             id: 'mbitMore.clearDisplay',
@@ -5467,104 +5479,119 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
             description: 'temperature (celsius) on the surface of CPU of micro:bit'
           }),
           blockType: blockType.REPORTER
-        }, {
-          opcode: 'getCompassHeading',
-          text: formatMessage({
-            id: 'mbitMore.compassHeading',
-            default: 'angle with the North',
-            description: 'angle from the North to the micro:bit heading direction'
-          }),
-          blockType: blockType.REPORTER
-        }, {
-          opcode: 'getPitch',
-          text: formatMessage({
-            id: 'mbitMore.pitch',
-            default: 'pitch',
-            description: 'nose up movement of the micro:bit from level'
-          }),
-          blockType: blockType.REPORTER
-        }, {
-          opcode: 'getRoll',
-          text: formatMessage({
-            id: 'mbitMore.roll',
-            default: 'roll',
-            description: 'clockwise circular movement of the micro:bit from level'
-          }),
-          blockType: blockType.REPORTER
-        }, {
+        },
+        /*
+        {
+            opcode: 'getCompassHeading',
+            text: formatMessage({
+                id: 'mbitMore.compassHeading',
+                default: 'angle with the North',
+                description: 'angle from the North to the micro:bit heading direction'
+            }),
+            blockType: BlockType.REPORTER
+        },
+        {
+            opcode: 'getPitch',
+            text: formatMessage({
+                id: 'mbitMore.pitch',
+                default: 'pitch',
+                description: 'nose up movement of the micro:bit from level'
+            }),
+            blockType: BlockType.REPORTER
+        },
+        {
+            opcode: 'getRoll',
+            text: formatMessage({
+                id: 'mbitMore.roll',
+                default: 'roll',
+                description: 'clockwise circular movement of the micro:bit from level'
+            }),
+            blockType: BlockType.REPORTER
+        },
+        */
+        // getSoundLevel は、湿度として利用します
+        {
           opcode: 'getSoundLevel',
           text: formatMessage({
             id: 'mbitMore.soundLevel',
-            default: 'sound level',
+            default: 'humidity',
             description: 'level of the sound from microphone on micro:bit'
           }),
           blockType: blockType.REPORTER
-        }, {
-          opcode: 'getMagneticForce',
-          text: formatMessage({
-            id: 'mbitMore.magneticForce',
-            default: 'magnetic force',
-            description: 'value of magnetic force (micro tesla)'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
-            AXIS: {
-              type: argumentType.STRING,
-              menu: 'axis',
-              defaultValue: AxisSymbol.Absolute
+        },
+        /*
+        {
+            opcode: 'getMagneticForce',
+            text: formatMessage({
+                id: 'mbitMore.magneticForce',
+                default: 'magnetic force',
+                description: 'value of magnetic force (micro tesla)'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                AXIS: {
+                    type: ArgumentType.STRING,
+                    menu: 'axis',
+                    defaultValue: AxisSymbol.Absolute
+                }
             }
-          }
-        }, {
-          opcode: 'getAcceleration',
-          text: formatMessage({
-            id: 'mbitMore.acceleration',
-            default: 'acceleration [AXIS]',
-            description: 'value of acceleration on the axis (milli-g)'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
-            AXIS: {
-              type: argumentType.STRING,
-              menu: 'axis',
-              defaultValue: AxisSymbol.X
+        },
+        {
+            opcode: 'getAcceleration',
+            text: formatMessage({
+                id: 'mbitMore.acceleration',
+                default: 'acceleration [AXIS]',
+                description: 'value of acceleration on the axis (milli-g)'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                AXIS: {
+                    type: ArgumentType.STRING,
+                    menu: 'axis',
+                    defaultValue: AxisSymbol.X
+                }
             }
-          }
-        }, '---', {
-          opcode: 'getAnalogValue',
-          text: formatMessage({
-            id: 'mbitMore.analogValue',
-            default: 'analog value of pin [PIN]',
-            description: 'analog input value of the pin'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
-            PIN: {
-              type: argumentType.STRING,
-              menu: 'analogInPins',
-              defaultValue: '0'
+        },
+        '---',
+        {
+            opcode: 'getAnalogValue',
+            text: formatMessage({
+                id: 'mbitMore.analogValue',
+                default: 'analog value of pin [PIN]',
+                description: 'analog input value of the pin'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                PIN: {
+                    type: ArgumentType.STRING,
+                    menu: 'analogInPins',
+                    defaultValue: '0'
+                }
             }
-          }
-        }, {
-          opcode: 'setPullMode',
-          text: formatMessage({
-            id: 'mbitMore.setPullMode',
-            default: 'set pin [PIN] to input [MODE]',
-            description: 'set a pin into the mode'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PIN: {
-              type: argumentType.STRING,
-              menu: 'gpio',
-              defaultValue: '0'
-            },
-            MODE: {
-              type: argumentType.STRING,
-              menu: 'pinMode',
-              defaultValue: MbitMorePullModeName.UP
+        },
+        {
+            opcode: 'setPullMode',
+            text: formatMessage({
+                id: 'mbitMore.setPullMode',
+                default: 'set pin [PIN] to input [MODE]',
+                description: 'set a pin into the mode'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+                PIN: {
+                    type: ArgumentType.STRING,
+                    menu: 'gpio',
+                    defaultValue: '0'
+                },
+                MODE: {
+                    type: ArgumentType.STRING,
+                    menu: 'pinMode',
+                    defaultValue: MbitMorePullModeName.UP
+                }
             }
-          }
-        }, {
+        },
+        */
+        {
           opcode: 'isPinHigh',
           text: formatMessage({
             id: 'mbitMore.isPinHigh',
@@ -5603,8 +5630,8 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
           opcode: 'setAnalogOut',
           text: formatMessage({
             id: 'mbitMore.setAnalogOut',
-            default: 'set [PIN] analog [LEVEL] %',
-            description: 'set pin to PWM mode and the level(0 to 1023)'
+            default: 'set [PIN] PWM to [LEVEL] %',
+            description: 'set pin to PWM mode and the level(0 to 100)'
           }),
           blockType: blockType.COMMAND,
           arguments: {
@@ -5618,34 +5645,38 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
               defaultValue: 0
             }
           }
-        }, {
-          opcode: 'setServo',
-          text: formatMessage({
-            id: 'mbitMore.setServo',
-            default: 'set [PIN] Servo [ANGLE]',
-            description: 'set pin to Servo mode and the angle(0 to 180)'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            PIN: {
-              type: argumentType.STRING,
-              menu: 'gpio',
-              defaultValue: '0'
-            },
-            ANGLE: {
-              type: argumentType.NUMBER,
-              defaultValue: 0
-            },
-            RANGE: {
-              type: argumentType.NUMBER,
-              defaultValue: 2000
-            },
-            CENTER: {
-              type: argumentType.NUMBER,
-              defaultValue: 1500
+        },
+        /*
+        {
+            opcode: 'setServo',
+            text: formatMessage({
+                id: 'mbitMore.setServo',
+                default: 'set [PIN] Servo [ANGLE]',
+                description: 'set pin to Servo mode and the angle(0 to 180)'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+                PIN: {
+                    type: ArgumentType.STRING,
+                    menu: 'gpio',
+                    defaultValue: '0'
+                },
+                ANGLE: {
+                    type: ArgumentType.NUMBER,
+                    defaultValue: 0
+                },
+                RANGE: {
+                    type: ArgumentType.NUMBER,
+                    defaultValue: 2000
+                },
+                CENTER: {
+                    type: ArgumentType.NUMBER,
+                    defaultValue: 1500
+                }
             }
-          }
-        }, {
+        },
+        */
+        {
           opcode: 'playTone',
           text: formatMessage({
             id: 'mbitMore.playTone',
@@ -5671,113 +5702,123 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
             description: 'stop tone on the speaker'
           }),
           blockType: blockType.COMMAND
-        }, '---', {
-          opcode: 'listenPinEventType',
-          text: formatMessage({
-            id: 'mbitMore.listenPinEventType',
-            default: 'listen [EVENT_TYPE] event on [PIN]',
-            description: 'listen the event on the pin'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            EVENT_TYPE: {
-              type: argumentType.STRING,
-              menu: 'pinEventTypeMenu',
-              defaultValue: 'NONE'
-            },
-            PIN: {
-              type: argumentType.STRING,
-              menu: 'gpio',
-              defaultValue: '0'
+        }, '---',
+        /*
+        {
+            opcode: 'listenPinEventType',
+            text: formatMessage({
+                id: 'mbitMore.listenPinEventType',
+                default: 'listen [EVENT_TYPE] event on [PIN]',
+                description: 'listen the event on the pin'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+                EVENT_TYPE: {
+                    type: ArgumentType.STRING,
+                    menu: 'pinEventTypeMenu',
+                    defaultValue: 'NONE'
+                },
+                PIN: {
+                    type: ArgumentType.STRING,
+                    menu: 'gpio',
+                    defaultValue: '0'
+                }
             }
-          }
-        }, {
-          opcode: 'whenPinEvent',
-          text: formatMessage({
-            id: 'mbitMore.whenPinEvent',
-            default: 'when catch [EVENT] at pin [PIN]',
-            description: 'when catch the event at the pin'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            EVENT: {
-              type: argumentType.STRING,
-              menu: 'pinEventMenu',
-              defaultValue: 'PULSE_LOW'
-            },
-            PIN: {
-              type: argumentType.STRING,
-              menu: 'gpio',
-              defaultValue: '0'
+        },
+        {
+            opcode: 'whenPinEvent',
+            text: formatMessage({
+                id: 'mbitMore.whenPinEvent',
+                default: 'when catch [EVENT] at pin [PIN]',
+                description: 'when catch the event at the pin'
+             }),
+            blockType: BlockType.HAT,
+            arguments: {
+                EVENT: {
+                    type: ArgumentType.STRING,
+                    menu: 'pinEventMenu',
+                    defaultValue: 'PULSE_LOW'
+                },
+                PIN: {
+                    type: ArgumentType.STRING,
+                    menu: 'gpio',
+                    defaultValue: '0'
+                }
             }
-          }
-        }, {
-          opcode: 'getPinEventValue',
-          text: formatMessage({
-            id: 'mbitMore.getPinEventValue',
-            default: 'value of [EVENT] at [PIN]',
-            description: 'value of the value of the event (timestamp of the edge or duration of the pulse)'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
-            EVENT: {
-              type: argumentType.STRING,
-              menu: 'pinEventTimestampMenu',
-              defaultValue: 'PULSE_LOW'
-            },
-            PIN: {
-              type: argumentType.STRING,
-              menu: 'gpio',
-              defaultValue: '0'
+        },
+        {
+            opcode: 'getPinEventValue',
+            text: formatMessage({
+                id: 'mbitMore.getPinEventValue',
+                default: 'value of [EVENT] at [PIN]',
+                description: 'value of the value of the event (timestamp of the edge or duration of the pulse)'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                EVENT: {
+                    type: ArgumentType.STRING,
+                    menu: 'pinEventTimestampMenu',
+                    defaultValue: 'PULSE_LOW'
+                },
+                PIN: {
+                    type: ArgumentType.STRING,
+                    menu: 'gpio',
+                    defaultValue: '0'
+                }
             }
-          }
-        }, '---', {
-          opcode: 'whenDataReceived',
-          text: formatMessage({
-            id: 'mbitMore.whenDataReceived',
-            default: 'when data with label [LABEL] received from micro:bit',
-            description: 'when the data which has the label received'
-          }),
-          blockType: blockType.HAT,
-          arguments: {
-            LABEL: {
-              type: argumentType.STRING,
-              defaultValue: 'label-01'
+        },
+        '---',
+        {
+            opcode: 'whenDataReceived',
+            text: formatMessage({
+                id: 'mbitMore.whenDataReceived',
+                default: 'when data with label [LABEL] received from micro:bit',
+                description: 'when the data which has the label received'
+            }),
+            blockType: BlockType.HAT,
+            arguments: {
+                LABEL: {
+                    type: ArgumentType.STRING,
+                    defaultValue: 'label-01'
+                }
             }
-          }
-        }, {
-          opcode: 'getDataLabeled',
-          text: formatMessage({
-            id: 'mbitMore.getDataLabeled',
-            default: 'data of label [LABEL]',
-            description: 'the last data which has the label'
-          }),
-          blockType: blockType.REPORTER,
-          arguments: {
-            LABEL: {
-              type: argumentType.STRING,
-              defaultValue: 'label-01'
+        },
+        {
+            opcode: 'getDataLabeled',
+            text: formatMessage({
+                id: 'mbitMore.getDataLabeled',
+                default: 'data of label [LABEL]',
+                description: 'the last data which has the label'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                LABEL: {
+                    type: ArgumentType.STRING,
+                    defaultValue: 'label-01'
+                }
             }
-          }
-        }, {
-          opcode: 'sendData',
-          text: formatMessage({
-            id: 'mbitMore.sendData',
-            default: 'send data [DATA] with label [LABEL] to micro:bit',
-            description: 'send data content with label to micro:bit'
-          }),
-          blockType: blockType.COMMAND,
-          arguments: {
-            LABEL: {
-              type: argumentType.STRING,
-              defaultValue: 'label-01'
-            },
-            DATA: {
-              type: argumentType.STRING,
-              defaultValue: 'data'
+        },
+        {
+            opcode: 'sendData',
+            text: formatMessage({
+                id: 'mbitMore.sendData',
+                default: 'send data [DATA] with label [LABEL] to micro:bit',
+                description: 'send data content with label to micro:bit'
+            }),
+            blockType: BlockType.COMMAND,
+            arguments: {
+                LABEL: {
+                    type: ArgumentType.STRING,
+                    defaultValue: 'label-01'
+                },
+                DATA: {
+                    type: ArgumentType.STRING,
+                    defaultValue: 'data'
+                }
             }
-          }
-        }, {
+        },
+        */
+        {
           opcode: 'getRGB',
           text: formatMessage({
             id: 'mbitMore.getRGB',

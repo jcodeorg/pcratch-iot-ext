@@ -779,6 +779,7 @@ class pcratchIoTBlocks {
                     }
                 },
                 '---',
+                /*
                 {
                     opcode: 'whenButtonEvent',
                     text: formatMessage({
@@ -905,6 +906,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                */
                 {
                     opcode: 'displayClear',
                     text: formatMessage({
@@ -933,6 +935,7 @@ class pcratchIoTBlocks {
                     }),
                     blockType: BlockType.REPORTER
                 },
+                /*
                 {
                     opcode: 'getCompassHeading',
                     text: formatMessage({
@@ -960,15 +963,18 @@ class pcratchIoTBlocks {
                     }),
                     blockType: BlockType.REPORTER
                 },
+                */
+                // getSoundLevel は、湿度として利用します
                 {
                     opcode: 'getSoundLevel',
                     text: formatMessage({
                         id: 'mbitMore.soundLevel',
-                        default: 'sound level',
+                        default: 'humidity',
                         description: 'level of the sound from microphone on micro:bit'
                     }),
                     blockType: BlockType.REPORTER
                 },
+                /*
                 {
                     opcode: 'getMagneticForce',
                     text: formatMessage({
@@ -1039,6 +1045,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                */
                 {
                     opcode: 'isPinHigh',
                     text: formatMessage({
@@ -1081,8 +1088,8 @@ class pcratchIoTBlocks {
                     opcode: 'setAnalogOut',
                     text: formatMessage({
                         id: 'mbitMore.setAnalogOut',
-                        default: 'set [PIN] analog [LEVEL] %',
-                        description: 'set pin to PWM mode and the level(0 to 1023)'
+                        default: 'set [PIN] PWM to [LEVEL] %',
+                        description: 'set pin to PWM mode and the level(0 to 100)'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -1097,6 +1104,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                /*
                 {
                     opcode: 'setServo',
                     text: formatMessage({
@@ -1125,6 +1133,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                */
                 {
                     opcode: 'playTone',
                     text: formatMessage({
@@ -1154,6 +1163,7 @@ class pcratchIoTBlocks {
                     blockType: BlockType.COMMAND
                 },
                 '---',
+                /*
                 {
                     opcode: 'listenPinEventType',
                     text: formatMessage({
@@ -1268,6 +1278,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                */
                 {
                     opcode: 'getRGB',
                     text: formatMessage({
