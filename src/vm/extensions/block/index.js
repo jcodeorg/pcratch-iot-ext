@@ -36,7 +36,7 @@ let extensionURL = 'https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.m
  * @readonly
  * @enum {number}
  */
-const MbitMorePullModeName = {
+const pcratchiot_PullModeName = {
     NONE: 'NONE',
     DOWN: 'DOWN',
     UP: 'UP'
@@ -47,7 +47,7 @@ const MbitMorePullModeName = {
  * @readonly
  * @enum {number}
  */
-const MbitMorePullModeID = {
+const pcratchiot_PullModeID = {
     NONE: 0,
     DOWN: 1,
     UP: 2
@@ -58,7 +58,7 @@ const MbitMorePullModeID = {
  * @readonly
  * @enum {string}
  */
-const MbitMoreButtonName = {
+const pcratchiot_ButtonName = {
     P0: 'P0',
     P1: 'P1',
     P2: 'P2',
@@ -72,7 +72,7 @@ const MbitMoreButtonName = {
  * @readonly
  * @enum {number}
  */
-const MbitMoreButtonPinIndex = {
+const pcratchiot_ButtonPinIndex = {
     P0: 0,
     P1: 1,
     P2: 2
@@ -83,7 +83,7 @@ const MbitMoreButtonPinIndex = {
  * @readonly
  * @enum {string}
  */
-const MbitMoreButtonEventName = {
+const pcratchiot_ButtonEventName = {
     DOWN: 'DOWN',
     UP: 'UP',
     CLICK: 'CLICK',
@@ -97,7 +97,7 @@ const MbitMoreButtonEventName = {
  * @readonly
  * @enum {string}
  */
-const MbitMoreGestureName =
+const pcratchiot_GestureName =
 {
     TILT_UP: 'TILT_UP',
     TILT_DOWN: 'TILT_DOWN',
@@ -113,11 +113,11 @@ const MbitMoreGestureName =
 };
 
 /**
- * Enum for event type in the micro:bit runtime.
+ * Enum for event type in the Pcratch IoT runtime.
  * @readonly
  * @enum {number}
  */
-const MbitMorePinEventType = {
+const pcratchiot_PinEventType = {
     NONE: 0,
     ON_EDGE: 1,
     ON_PULSE: 2,
@@ -125,11 +125,11 @@ const MbitMorePinEventType = {
 };
 
 /**
- * Enum for event value in the micro:bit runtime.
+ * Enum for event value in the Pcratch IoT runtime.
  * @readonly
  * @enum {number}
  */
-const MbitMorePinEvent = {
+const pcratchiot_PinEvent = {
     RISE: 2,
     FALL: 3,
     PULSE_HIGH: 4,
@@ -167,7 +167,7 @@ class pcratchIoTBlocks {
      */
     static get EXTENSION_NAME () {
         return formatMessage({
-            id: 'mbitMore.name',
+            id: 'pcratch_iot.name',
             default: 'Pcratch IoT',
             description: 'name of the extension'
         });
@@ -203,91 +203,91 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.tiltUp',
+                    id: 'pcratch_iot.gesturesMenu.tiltUp',
                     default: 'titl up',
                     description: 'label for tilt up gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.TILT_UP
+                value: pcratchiot_GestureName.TILT_UP
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.tiltDown',
+                    id: 'pcratch_iot.gesturesMenu.tiltDown',
                     default: 'titl down',
                     description: 'label for tilt down gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.TILT_DOWN
+                value: pcratchiot_GestureName.TILT_DOWN
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.tiltLeft',
+                    id: 'pcratch_iot.gesturesMenu.tiltLeft',
                     default: 'titl left',
                     description: 'label for tilt left gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.TILT_LEFT
+                value: pcratchiot_GestureName.TILT_LEFT
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.tiltRight',
+                    id: 'pcratch_iot.gesturesMenu.tiltRight',
                     default: 'titl right',
                     description: 'label for tilt right gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.TILT_RIGHT
+                value: pcratchiot_GestureName.TILT_RIGHT
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.faceUp',
+                    id: 'pcratch_iot.gesturesMenu.faceUp',
                     default: 'face up',
                     description: 'label for face up gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.FACE_UP
+                value: pcratchiot_GestureName.FACE_UP
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.faceDown',
+                    id: 'pcratch_iot.gesturesMenu.faceDown',
                     default: 'face down',
                     description: 'label for face down gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.FACE_DOWN
+                value: pcratchiot_GestureName.FACE_DOWN
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.freefall',
+                    id: 'pcratch_iot.gesturesMenu.freefall',
                     default: 'freefall',
                     description: 'label for freefall gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.FREEFALL
+                value: pcratchiot_GestureName.FREEFALL
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.g3',
+                    id: 'pcratch_iot.gesturesMenu.g3',
                     default: '3G',
                     description: 'label for 3G gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.G3
+                value: pcratchiot_GestureName.G3
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.g6',
+                    id: 'pcratch_iot.gesturesMenu.g6',
                     default: '6G',
                     description: 'label for 6G gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.G6
+                value: pcratchiot_GestureName.G6
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.g8',
+                    id: 'pcratch_iot.gesturesMenu.g8',
                     default: '8G',
                     description: 'label for 3G gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.G8
+                value: pcratchiot_GestureName.G8
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.gesturesMenu.shake',
+                    id: 'pcratch_iot.gesturesMenu.shake',
                     default: 'shake',
                     description: 'label for shaken gesture in gesture picker for microbit more extension'
                 }),
-                value: MbitMoreGestureName.SHAKE
+                value: pcratchiot_GestureName.SHAKE
             }
 
         ];
@@ -301,19 +301,19 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.buttonIDMenu.a',
+                    id: 'pcratch_iot.buttonIDMenu.a',
                     default: 'A',
                     description: 'label for "A" element in button picker for Microbit More extension'
                 }),
-                value: MbitMoreButtonName.A
+                value: pcratchiot_ButtonName.A
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.buttonIDMenu.b',
+                    id: 'pcratch_iot.buttonIDMenu.b',
                     default: 'B',
                     description: 'label for "B" element in button picker for Microbit More extension'
                 }),
-                value: MbitMoreButtonName.B
+                value: pcratchiot_ButtonName.B
             }
         ];
     }
@@ -325,52 +325,52 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.buttonEventMenu.down',
+                    id: 'pcratch_iot.buttonEventMenu.down',
                     default: 'down',
                     description: 'label for button down event'
                 }),
-                value: MbitMoreButtonEventName.DOWN
+                value: pcratchiot_ButtonEventName.DOWN
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.buttonEventMenu.up',
+                    id: 'pcratch_iot.buttonEventMenu.up',
                     default: 'up',
                     description: 'label for button up event'
                 }),
-                value: MbitMoreButtonEventName.UP
+                value: pcratchiot_ButtonEventName.UP
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.buttonEventMenu.click',
+                    id: 'pcratch_iot.buttonEventMenu.click',
                     default: 'click',
                     description: 'label for button click event'
                 }),
-                value: MbitMoreButtonEventName.CLICK
+                value: pcratchiot_ButtonEventName.CLICK
             // },
             // // These events are not in use because they are unstable in coal-microbit-v2.
             // {
             //     text: formatMessage({
-            //         id: 'mbitMore.buttonEventMenu.hold',
+            //         id: 'pcratch_iot.buttonEventMenu.hold',
             //         default: 'hold',
             //         description: 'label for button hold event'
             //     }),
-            //     value: MbitMoreButtonEventName.HOLD
+            //     value: pcratchiot_ButtonEventName.HOLD
             // },
             // {
             //     text: formatMessage({
-            //         id: 'mbitMore.buttonEventMenu.longClick',
+            //         id: 'pcratch_iot.buttonEventMenu.longClick',
             //         default: 'long click',
             //         description: 'label for button long click event'
             //     }),
-            //     value: MbitMoreButtonEventName.LONG_CLICK
+            //     value: pcratchiot_ButtonEventName.LONG_CLICK
             // },
             // {
             //     text: formatMessage({
-            //         id: 'mbitMore.buttonEventMenu.doubleClick',
+            //         id: 'pcratch_iot.buttonEventMenu.doubleClick',
             //         default: 'double click',
             //         description: 'label for button double click event'
             //     }),
-            //     value: MbitMoreButtonEventName.DOUBLE_CLICK
+            //     value: pcratchiot_ButtonEventName.DOUBLE_CLICK
             }
         ];
     }
@@ -382,23 +382,23 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.touchIDMenu.logo',
+                    id: 'pcratch_iot.touchIDMenu.logo',
                     default: 'LOGO',
                     description: 'label for "LOGO" element in touch button picker for Microbit More extension'
                 }),
-                value: MbitMoreButtonName.LOGO
+                value: pcratchiot_ButtonName.LOGO
             },
             {
                 text: 'P0',
-                value: MbitMoreButtonName.P0
+                value: pcratchiot_ButtonName.P0
             },
             {
                 text: 'P1',
-                value: MbitMoreButtonName.P1
+                value: pcratchiot_ButtonName.P1
             },
             {
                 text: 'P2',
-                value: MbitMoreButtonName.P2
+                value: pcratchiot_ButtonName.P2
             }
         ];
     }
@@ -410,52 +410,52 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.touchEventMenu.touched',
+                    id: 'pcratch_iot.touchEventMenu.touched',
                     default: 'touched',
                     description: 'label for touched event'
                 }),
-                value: MbitMoreButtonEventName.DOWN
+                value: pcratchiot_ButtonEventName.DOWN
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.touchEventMenu.released',
+                    id: 'pcratch_iot.touchEventMenu.released',
                     default: 'released',
                     description: 'label for released event'
                 }),
-                value: MbitMoreButtonEventName.UP
+                value: pcratchiot_ButtonEventName.UP
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.touchEventMenu.tapped',
+                    id: 'pcratch_iot.touchEventMenu.tapped',
                     default: 'tapped',
                     description: 'label for tapped event'
                 }),
-                value: MbitMoreButtonEventName.CLICK
+                value: pcratchiot_ButtonEventName.CLICK
             // },
             // // These events are not in use because they are unstable in coal-microbit-v2.
             // {
             //     text: formatMessage({
-            //         id: 'mbitMore.touchEventMenu.hold',
+            //         id: 'pcratch_iot.touchEventMenu.hold',
             //         default: 'hold',
             //         description: 'label for hold event in touch'
             //     }),
-            //     value: MbitMoreButtonEventName.HOLD
+            //     value: pcratchiot_ButtonEventName.HOLD
             // },
             // {
             //     text: formatMessage({
-            //         id: 'mbitMore.touchEventMenu.longTapped',
+            //         id: 'pcratch_iot.touchEventMenu.longTapped',
             //         default: 'long tapped',
             //         description: 'label for long click event in touch'
             //     }),
-            //     value: MbitMoreButtonEventName.LONG_CLICK
+            //     value: pcratchiot_ButtonEventName.LONG_CLICK
             // },
             // {
             //     text: formatMessage({
-            //         id: 'mbitMore.touchEventMenu.doubleTapped',
+            //         id: 'pcratch_iot.touchEventMenu.doubleTapped',
             //         default: 'double tapped',
             //         description: 'label for double click event in touch'
             //     }),
-            //     value: MbitMoreButtonEventName.DOUBLE_CLICK
+            //     value: pcratchiot_ButtonEventName.DOUBLE_CLICK
             }
         ];
     }
@@ -485,7 +485,7 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.digitalValueMenu.Low',
+                    id: 'pcratch_iot.digitalValueMenu.Low',
                     default: 'Low',
                     description: 'label for low value in digital output menu for microbit more extension'
                 }),
@@ -493,7 +493,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.digitalValueMenu.High',
+                    id: 'pcratch_iot.digitalValueMenu.High',
                     default: 'High',
                     description: 'label for high value in digital output menu for microbit more extension'
                 }),
@@ -506,7 +506,7 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.axisMenu.x',
+                    id: 'pcratch_iot.axisMenu.x',
                     default: 'x',
                     description: 'label of X axis.'
                 }),
@@ -514,7 +514,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.axisMenu.y',
+                    id: 'pcratch_iot.axisMenu.y',
                     default: 'y',
                     description: 'label of Y axis.'
                 }),
@@ -522,7 +522,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.axisMenu.z',
+                    id: 'pcratch_iot.axisMenu.z',
                     default: 'z',
                     description: 'label of Z axis.'
                 }),
@@ -530,7 +530,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.axisMenu.absolute',
+                    id: 'pcratch_iot.axisMenu.absolute',
                     default: 'absolute',
                     description: 'label of absolute value.'
                 }),
@@ -546,27 +546,27 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinModeMenu.pullNone',
+                    id: 'pcratch_iot.pinModeMenu.pullNone',
                     default: 'pull none',
                     description: 'label for pullNone mode'
                 }),
-                value: MbitMorePullModeName.NONE
+                value: pcratchiot_PullModeName.NONE
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinModeMenu.pullUp',
+                    id: 'pcratch_iot.pinModeMenu.pullUp',
                     default: 'pull up',
                     description: 'label for pullUp mode'
                 }),
-                value: MbitMorePullModeName.UP
+                value: pcratchiot_PullModeName.UP
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinModeMenu.pullDown',
+                    id: 'pcratch_iot.pinModeMenu.pullDown',
                     default: 'pull down',
                     description: 'label for pullDown mode'
                 }),
-                value: MbitMorePullModeName.DOWN
+                value: pcratchiot_PullModeName.DOWN
             }
         ];
     }
@@ -578,7 +578,7 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventMenu.pulseLow',
+                    id: 'pcratch_iot.pinEventMenu.pulseLow',
                     default: 'low pulse',
                     description: 'label for low pulse event'
                 }),
@@ -586,7 +586,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventMenu.pulseHigh',
+                    id: 'pcratch_iot.pinEventMenu.pulseHigh',
                     default: 'high pulse',
                     description: 'label for high pulse event'
                 }),
@@ -594,7 +594,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventMenu.fall',
+                    id: 'pcratch_iot.pinEventMenu.fall',
                     default: 'fall',
                     description: 'label for fall event'
                 }),
@@ -602,7 +602,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventMenu.rise',
+                    id: 'pcratch_iot.pinEventMenu.rise',
                     default: 'rise',
                     description: 'label for rise event'
                 }),
@@ -618,7 +618,7 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTimestampMenu.pulseLow',
+                    id: 'pcratch_iot.pinEventTimestampMenu.pulseLow',
                     default: 'low pulse',
                     description: 'label for low pulse event'
                 }),
@@ -626,7 +626,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTimestampMenu.pulseHigh',
+                    id: 'pcratch_iot.pinEventTimestampMenu.pulseHigh',
                     default: 'high pulse',
                     description: 'label for high pulse event'
                 }),
@@ -634,7 +634,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTimestampMenu.fall',
+                    id: 'pcratch_iot.pinEventTimestampMenu.fall',
                     default: 'fall',
                     description: 'label for fall event'
                 }),
@@ -642,7 +642,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTimestampMenu.rise',
+                    id: 'pcratch_iot.pinEventTimestampMenu.rise',
                     default: 'rise',
                     description: 'label for rise event'
                 }),
@@ -658,7 +658,7 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTypeMenu.none',
+                    id: 'pcratch_iot.pinEventTypeMenu.none',
                     default: 'none',
                     description: 'label for remove event listener'
                 }),
@@ -666,7 +666,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTypeMenu.pulse',
+                    id: 'pcratch_iot.pinEventTypeMenu.pulse',
                     default: 'pulse',
                     description: 'label for pulse event type'
                 }),
@@ -674,7 +674,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.pinEventTypeMenu.edge',
+                    id: 'pcratch_iot.pinEventTypeMenu.edge',
                     default: 'edge',
                     description: 'label for edge event type'
                 }),
@@ -690,7 +690,7 @@ class pcratchIoTBlocks {
         return [
             {
                 text: formatMessage({
-                    id: 'mbitMore.connectionStateMenu.connected',
+                    id: 'pcratch_iot.connectionStateMenu.connected',
                     default: 'connected',
                     description: 'label for connected'
                 }),
@@ -698,7 +698,7 @@ class pcratchIoTBlocks {
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.connectionStateMenu.disconnected',
+                    id: 'pcratch_iot.connectionStateMenu.disconnected',
                     default: 'disconnected',
                     description: 'label for disconnected'
                 }),
@@ -764,10 +764,10 @@ class pcratchIoTBlocks {
             blocks: [
                 {
                     opcode: 'whenConnectionChanged',
-                    text: formatMessage({
-                        id: 'mbitMore.whenConnectionChanged',
-                        default: 'when micro:bit [STATE]',
-                        description: 'when a micro:bit connection state changed'
+                    text: formatMessage({ // pcratchiot_. -> pcratch_iot.
+                        id: 'pcratch_iot.whenConnectionChanged',
+                        default: 'when Pcratch IoT [STATE]',
+                        description: 'when a Pcratch IoT connection state changed'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
@@ -783,65 +783,65 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'whenButtonEvent',
                     text: formatMessage({
-                        id: 'mbitMore.whenButtonEvent',
+                        id: 'pcratch_iot.whenButtonEvent',
                         default: 'when button [NAME] is [EVENT]',
-                        description: 'when the selected button on the micro:bit get the selected event'
+                        description: 'when the selected button on the Pcratch IoT get the selected event'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
                         NAME: {
                             type: ArgumentType.STRING,
                             menu: 'buttonIDMenu',
-                            defaultValue: MbitMoreButtonName.A
+                            defaultValue: pcratchiot_ButtonName.A
                         },
                         EVENT: {
                             type: ArgumentType.STRING,
                             menu: 'buttonEventMenu',
-                            defaultValue: MbitMoreButtonEventName.DOWN
+                            defaultValue: pcratchiot_ButtonEventName.DOWN
                         }
                     }
                 },
                 {
                     opcode: 'isButtonPressed',
                     text: formatMessage({
-                        id: 'mbitMore.isButtonPressed',
+                        id: 'pcratch_iot.isButtonPressed',
                         default: 'button [NAME] pressed?',
-                        description: 'is the selected button on the micro:bit pressed?'
+                        description: 'is the selected button on the Pcratch IoT pressed?'
                     }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         NAME: {
                             type: ArgumentType.STRING,
                             menu: 'buttonIDMenu',
-                            defaultValue: MbitMoreButtonName.A
+                            defaultValue: pcratchiot_ButtonName.A
                         }
                     }
                 },
                 {
                     opcode: 'whenTouchEvent',
                     text: formatMessage({
-                        id: 'mbitMore.whenTouchEvent',
+                        id: 'pcratch_iot.whenTouchEvent',
                         default: 'when pin [NAME] is [EVENT]',
-                        description: 'when the selected touch pin on the micro:bit is touched'
+                        description: 'when the selected touch pin on the Pcratch IoT is touched'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
                         NAME: {
                             type: ArgumentType.STRING,
                             menu: 'touchIDMenu',
-                            defaultValue: MbitMoreButtonName.LOGO
+                            defaultValue: pcratchiot_ButtonName.LOGO
                         },
                         EVENT: {
                             type: ArgumentType.STRING,
                             menu: 'touchEventMenu',
-                            defaultValue: MbitMoreButtonEventName.DOWN
+                            defaultValue: pcratchiot_ButtonEventName.DOWN
                         }
                     }
                 },
                 {
                     opcode: 'isPinTouched',
                     text: formatMessage({
-                        id: 'mbitMore.isPinTouched',
+                        id: 'pcratch_iot.isPinTouched',
                         default: 'pin [NAME] is touched?',
                         description: 'is the selected pin is touched?'
                     }),
@@ -850,7 +850,7 @@ class pcratchIoTBlocks {
                         NAME: {
                             type: ArgumentType.STRING,
                             menu: 'touchIDMenu',
-                            defaultValue: MbitMoreButtonName.LOGO
+                            defaultValue: pcratchiot_ButtonName.LOGO
                         }
                     }
                 },
@@ -858,16 +858,16 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'whenGesture',
                     text: formatMessage({
-                        id: 'mbitMore.whenGesture',
+                        id: 'pcratch_iot.whenGesture',
                         default: 'when [GESTURE]',
-                        description: 'when the selected gesture is detected by the micro:bit'
+                        description: 'when the selected gesture is detected by the Pcratch IoT'
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
                         GESTURE: {
                             type: ArgumentType.STRING,
                             menu: 'gestures',
-                            defaultValue: MbitMoreGestureName.SHAKE
+                            defaultValue: pcratchiot_GestureName.SHAKE
                         }
                     }
                 },
@@ -875,9 +875,9 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'displayMatrix',
                     text: formatMessage({
-                        id: 'mbitMore.displayMatrix',
+                        id: 'pcratch_iot.displayMatrix',
                         default: 'display pattern [MATRIX] ',
-                        description: 'display a pattern on the micro:bit display'
+                        description: 'display a pattern on the Pcratch IoT display'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -890,9 +890,9 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'displayText',
                     text: formatMessage({
-                        id: 'mbitMore.displayText',
+                        id: 'pcratch_iot.displayText',
                         default: 'display text [TEXT] delay [DELAY] ms',
-                        description: 'display text on the micro:bit display'
+                        description: 'display text on the Pcratch IoT display'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -906,32 +906,32 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
-                */
                 {
                     opcode: 'displayClear',
                     text: formatMessage({
-                        id: 'mbitMore.clearDisplay',
+                        id: 'pcratch_iot.clearDisplay',
                         default: 'clear display',
-                        description: 'display nothing on the micro:bit display'
+                        description: 'display nothing on the Pcratch IoT display'
                     }),
                     blockType: BlockType.COMMAND
                 },
+                */
                 '---',
                 {
                     opcode: 'getLightLevel',
                     text: formatMessage({
-                        id: 'mbitMore.lightLevel',
+                        id: 'pcratch_iot.lightLevel',
                         default: 'light intensity',
-                        description: 'how much the amount of light falling on the LEDs on micro:bit'
+                        description: 'how much the amount of light falling on the LEDs on Pcratch IoT'
                     }),
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: 'getTemperature',
                     text: formatMessage({
-                        id: 'mbitMore.temperature',
+                        id: 'pcratch_iot.temperature',
                         default: 'temperature',
-                        description: 'temperature (celsius) on the surface of CPU of micro:bit'
+                        description: 'temperature (celsius) on the surface of CPU of Pcratch IoT'
                     }),
                     blockType: BlockType.REPORTER
                 },
@@ -939,27 +939,27 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getCompassHeading',
                     text: formatMessage({
-                        id: 'mbitMore.compassHeading',
+                        id: 'pcratch_iot.compassHeading',
                         default: 'angle with the North',
-                        description: 'angle from the North to the micro:bit heading direction'
+                        description: 'angle from the North to the Pcratch IoT heading direction'
                     }),
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: 'getPitch',
                     text: formatMessage({
-                        id: 'mbitMore.pitch',
+                        id: 'pcratch_iot.pitch',
                         default: 'pitch',
-                        description: 'nose up movement of the micro:bit from level'
+                        description: 'nose up movement of the Pcratch IoT from level'
                     }),
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: 'getRoll',
                     text: formatMessage({
-                        id: 'mbitMore.roll',
+                        id: 'pcratch_iot.roll',
                         default: 'roll',
-                        description: 'clockwise circular movement of the micro:bit from level'
+                        description: 'clockwise circular movement of the Pcratch IoT from level'
                     }),
                     blockType: BlockType.REPORTER
                 },
@@ -968,9 +968,9 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getSoundLevel',
                     text: formatMessage({
-                        id: 'mbitMore.soundLevel',
+                        id: 'pcratch_iot.soundLevel',
                         default: 'humidity',
-                        description: 'level of the sound from microphone on micro:bit'
+                        description: 'level of the sound from microphone on Pcratch IoT'
                     }),
                     blockType: BlockType.REPORTER
                 },
@@ -978,7 +978,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getMagneticForce',
                     text: formatMessage({
-                        id: 'mbitMore.magneticForce',
+                        id: 'pcratch_iot.magneticForce',
                         default: 'magnetic force',
                         description: 'value of magnetic force (micro tesla)'
                     }),
@@ -994,7 +994,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getAcceleration',
                     text: formatMessage({
-                        id: 'mbitMore.acceleration',
+                        id: 'pcratch_iot.acceleration',
                         default: 'acceleration [AXIS]',
                         description: 'value of acceleration on the axis (milli-g)'
                     }),
@@ -1011,7 +1011,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getAnalogValue',
                     text: formatMessage({
-                        id: 'mbitMore.analogValue',
+                        id: 'pcratch_iot.analogValue',
                         default: 'analog value of pin [PIN]',
                         description: 'analog input value of the pin'
                     }),
@@ -1027,7 +1027,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'setPullMode',
                     text: formatMessage({
-                        id: 'mbitMore.setPullMode',
+                        id: 'pcratch_iot.setPullMode',
                         default: 'set pin [PIN] to input [MODE]',
                         description: 'set a pin into the mode'
                     }),
@@ -1041,7 +1041,7 @@ class pcratchIoTBlocks {
                         MODE: {
                             type: ArgumentType.STRING,
                             menu: 'pinMode',
-                            defaultValue: MbitMorePullModeName.UP
+                            defaultValue: pcratchiot_PullModeName.UP
                         }
                     }
                 },
@@ -1049,7 +1049,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'isPinHigh',
                     text: formatMessage({
-                        id: 'mbitMore.isPinHigh',
+                        id: 'pcratch_iot.isPinHigh',
                         default: '[PIN] pin is high?',
                         description: 'is the selected pin high as digital?'
                     }),
@@ -1066,7 +1066,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'setDigitalOut',
                     text: formatMessage({
-                        id: 'mbitMore.setDigitalOut',
+                        id: 'pcratch_iot.setDigitalOut',
                         default: 'set [PIN] Digital [LEVEL]',
                         description: 'set pin to Digital Output mode and the level(High = true)'
                     }),
@@ -1087,7 +1087,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'setAnalogOut',
                     text: formatMessage({
-                        id: 'mbitMore.setAnalogOut',
+                        id: 'pcratch_iot.setAnalogOut',
                         default: 'set [PIN] PWM to [LEVEL] %',
                         description: 'set pin to PWM mode and the level(0 to 100)'
                     }),
@@ -1108,7 +1108,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'setServo',
                     text: formatMessage({
-                        id: 'mbitMore.setServo',
+                        id: 'pcratch_iot.setServo',
                         default: 'set [PIN] Servo [ANGLE]',
                         description: 'set pin to Servo mode and the angle(0 to 180)'
                     }),
@@ -1137,7 +1137,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'playTone',
                     text: formatMessage({
-                        id: 'mbitMore.playTone',
+                        id: 'pcratch_iot.playTone',
                         default: 'play tone [FREQ] Hz volume [VOL] %',
                         description: 'play tone on the speaker'
                     }),
@@ -1156,7 +1156,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'stopTone',
                     text: formatMessage({
-                        id: 'mbitMore.stopTone',
+                        id: 'pcratch_iot.stopTone',
                         default: 'stop tone',
                         description: 'stop tone on the speaker'
                     }),
@@ -1167,7 +1167,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'listenPinEventType',
                     text: formatMessage({
-                        id: 'mbitMore.listenPinEventType',
+                        id: 'pcratch_iot.listenPinEventType',
                         default: 'listen [EVENT_TYPE] event on [PIN]',
                         description: 'listen the event on the pin'
                     }),
@@ -1188,7 +1188,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'whenPinEvent',
                     text: formatMessage({
-                        id: 'mbitMore.whenPinEvent',
+                        id: 'pcratch_iot.whenPinEvent',
                         default: 'when catch [EVENT] at pin [PIN]',
                         description: 'when catch the event at the pin'
 
@@ -1210,7 +1210,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getPinEventValue',
                     text: formatMessage({
-                        id: 'mbitMore.getPinEventValue',
+                        id: 'pcratch_iot.getPinEventValue',
                         default: 'value of [EVENT] at [PIN]',
                         description: 'value of the value of the event (timestamp of the edge or duration of the pulse)'
                     }),
@@ -1232,8 +1232,8 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'whenDataReceived',
                     text: formatMessage({
-                        id: 'mbitMore.whenDataReceived',
-                        default: 'when data with label [LABEL] received from micro:bit',
+                        id: 'pcratch_iot.whenDataReceived',
+                        default: 'when data with label [LABEL] received from Pcratch IoT',
                         description: 'when the data which has the label received'
                     }),
                     blockType: BlockType.HAT,
@@ -1247,7 +1247,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getDataLabeled',
                     text: formatMessage({
-                        id: 'mbitMore.getDataLabeled',
+                        id: 'pcratch_iot.getDataLabeled',
                         default: 'data of label [LABEL]',
                         description: 'the last data which has the label'
                     }),
@@ -1262,9 +1262,9 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'sendData',
                     text: formatMessage({
-                        id: 'mbitMore.sendData',
-                        default: 'send data [DATA] with label [LABEL] to micro:bit',
-                        description: 'send data content with label to micro:bit'
+                        id: 'pcratch_iot.sendData',
+                        default: 'send data [DATA] with label [LABEL] to Pcratch IoT',
+                        description: 'send data content with label to Pcratch IoT'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -1282,7 +1282,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'getRGB',
                     text: formatMessage({
-                        id: 'mbitMore.getRGB',
+                        id: 'pcratch_iot.getRGB',
                         default: 'RGB [R] [G] [B]',
                         description: 'get the RGB value'
                     }),
@@ -1305,7 +1305,7 @@ class pcratchIoTBlocks {
                 {
                     opcode: 'setNeoPixcelColor',
                     text: formatMessage({
-                        id: 'mbitMore.setNeoPixcelColor',
+                        id: 'pcratch_iot.setNeoPixcelColor',
                         default: 'set [N] NeoPixcel with color [COLOR]',
                         description: 'set NeoPixcel color'
                     }),
@@ -1443,13 +1443,13 @@ class pcratchIoTBlocks {
      */
     whenTouchEvent (args, util) {
         const buttonName = args.NAME;
-        if (buttonName === MbitMoreButtonName.LOGO) {
+        if (buttonName === pcratchiot_ButtonName.LOGO) {
             return this.whenButtonEvent(args);
         }
-        if (this.microbit.isPinTouchMode(MbitMoreButtonPinIndex[buttonName])) {
+        if (this.microbit.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
             return this.whenButtonEvent(args);
         }
-        const configPromise = this.microbit.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
+        const configPromise = this.microbit.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
         if (!configPromise) return; // This thread was yielded.
         return configPromise.then(() => this.whenButtonEvent(args));
     }
@@ -1463,13 +1463,13 @@ class pcratchIoTBlocks {
      */
     isPinTouched (args, util) {
         const buttonName = args.NAME;
-        if (buttonName === MbitMoreButtonName.LOGO) {
+        if (buttonName === pcratchiot_ButtonName.LOGO) {
             return this.microbit.isTouched(buttonName);
         }
-        if (this.microbit.isPinTouchMode(MbitMoreButtonPinIndex[buttonName])) {
+        if (this.microbit.isPinTouchMode(pcratchiot_ButtonPinIndex[buttonName])) {
             return this.microbit.isTouched(buttonName);
         }
-        const configPromise = this.microbit.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
+        const configPromise = this.microbit.configTouchPin(pcratchiot_ButtonPinIndex[buttonName], util);
         if (!configPromise) return; // This thread was yielded.
         return configPromise.then(() => this.microbit.isTouched(buttonName));
     }
@@ -1617,7 +1617,7 @@ class pcratchIoTBlocks {
     }
 
     /**
-     * Get temperature (integer in celsius) of micro:bit.
+     * Get temperature (integer in celsius) of Pcratch IoT.
      * @param {object} args - the block's arguments.
      * @return {number} - value of temperature [centigrade].
      */
@@ -1626,7 +1626,7 @@ class pcratchIoTBlocks {
     }
 
     /**
-     * Get loudness of the sound from microphone on micro:bit.
+     * Get loudness of the sound from microphone on Pcratch IoT.
      * @param {object} args - the block's arguments.
      * @param {object} util - utility object provided by the runtime.
      * @return {Promise} - a Promise that resolves digital input value of the pin or undefinde if yield.
@@ -1644,7 +1644,7 @@ class pcratchIoTBlocks {
     }
 
     /**
-     * Return angle from the north to the micro:bit heading direction.
+     * Return angle from the north to the Pcratch IoT heading direction.
      * @return {number} - degree of compass heading angle from the north (0 - 359 degrees).
      */
     getCompassHeading () {
@@ -1694,13 +1694,13 @@ class pcratchIoTBlocks {
      * Set pull mode of the pin.
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
-     * @param {MbitMorePullModeName} args.MODE - mode to set.
+     * @param {pcratchiot_PullModeName} args.MODE - mode to set.
      * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {promise | undefined} - a Promise that resolves when the command was sent
      *                                 or undefined if this process was yield.
      */
     setPullMode (args, util) {
-        return this.microbit.setPullMode(parseInt(args.PIN, 10), MbitMorePullModeID[args.MODE], util);
+        return this.microbit.setPullMode(parseInt(args.PIN, 10), pcratchiot_PullModeID[args.MODE], util);
     }
 
     /**
@@ -1790,7 +1790,7 @@ class pcratchIoTBlocks {
     }
 
     /**
-     * Return pitch [degrees] of the micro:bit heading direction.
+     * Return pitch [degrees] of the Pcratch IoT heading direction.
      * @return {number} - degree of pitch.
      */
     getPitch () {
@@ -1798,7 +1798,7 @@ class pcratchIoTBlocks {
     }
 
     /**
-     * Read roll [degrees] of the micro:bit heading direction.
+     * Read roll [degrees] of the Pcratch IoT heading direction.
      * @return {number} - degree of roll.
      */
     getRoll () {
@@ -1843,7 +1843,7 @@ class pcratchIoTBlocks {
      *                                 or undefined if this process was yield.
     */
     listenPinEventType (args, util) {
-        return this.microbit.listenPinEventType(parseInt(args.PIN, 10), MbitMorePinEventType[args.EVENT_TYPE], util);
+        return this.microbit.listenPinEventType(parseInt(args.PIN, 10), pcratchiot_PinEventType[args.EVENT_TYPE], util);
     }
 
     /**
@@ -1855,7 +1855,7 @@ class pcratchIoTBlocks {
      * @return {number} - timestamp of the event or 0.
      */
     getPinEventValue (args) {
-        const value = this.microbit.getPinEventValue(parseInt(args.PIN, 10), MbitMorePinEvent[args.EVENT]);
+        const value = this.microbit.getPinEventValue(parseInt(args.PIN, 10), pcratchiot_PinEvent[args.EVENT]);
         return value ? value : 0;
     }
 
@@ -1878,7 +1878,7 @@ class pcratchIoTBlocks {
     /**
      * Return the previous timestamp of the pin event or undefined if the event was not received.
      * @param {number} pinIndex - index of the pin to get the event.
-     * @param {MbitMorePinEvent} eventID - ID of the event to get.
+     * @param {pcratchiot_PinEvent} eventID - ID of the event to get.
      * @return {?number} Timestamp of the previous event or null.
      */
     getPrevPinEventTimestamp (pinIndex, eventID) {
@@ -1903,7 +1903,7 @@ class pcratchIoTBlocks {
             }, this.runtime.currentStepTime);
         }
         const pinIndex = parseInt(args.PIN, 10);
-        const eventID = MbitMorePinEvent[args.EVENT];
+        const eventID = pcratchiot_PinEvent[args.EVENT];
         const lastTimestamp =
             this.microbit.getPinEventTimestamp(pinIndex, eventID);
         if (lastTimestamp === null) return false;
@@ -1974,7 +1974,7 @@ class pcratchIoTBlocks {
     }
 
     /**
-     * Test whether a micro:bit connected.
+     * Test whether a Pcratch IoT connected.
      * @param {object} args - the block's arguments.
      * @property {string} args.STATE - the state of connection to check.
      * @return {boolean} - true if the state is matched.

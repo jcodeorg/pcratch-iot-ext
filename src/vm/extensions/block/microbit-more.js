@@ -12,14 +12,14 @@ const base64ToUint8Array = base64 => {
  * @readonly
  * @enum {number}
  */
-const MbitMoreHardwareVersion =
+const pcratchiot_HardwareVersion =
 {
     MICROBIT_V1: 1,
     MICROBIT_V2: 2
 };
 
 /**
- * Communication route between Scratch and micro:bit
+ * Communication route between Scratch and Pcratch IoT
  *
  */
 const CommunicationRoute = {
@@ -28,7 +28,7 @@ const CommunicationRoute = {
 };
 
 /**
- * Enum for micro:bit BLE command protocol.
+ * Enum for Pcratch IoT BLE command protocol.
  * https://github.com/LLK/scratch-microbit-firmware/blob/master/protocol.md
  * @readonly
  * @enum {number}
@@ -47,7 +47,7 @@ const BLECommand = {
  * @readonly
  * @enum {number}
  */
-const MbitMorePinCommand =
+const pcratchiot_PinCommand =
 {
     SET_OUTPUT: 0x01,
     SET_PWM: 0x02,
@@ -61,7 +61,7 @@ const MbitMorePinCommand =
  * @readonly
  * @enum {number}
  */
-const MbitMoreDisplayCommand =
+const pcratchiot_DisplayCommand =
 {
     CLEAR: 0x00,
     TEXT: 0x01,
@@ -74,7 +74,7 @@ const MbitMoreDisplayCommand =
  * @readonly
  * @enum {number}
  */
-const MbitMorePIOTCommand =
+const pcratchiot_PIOTCommand =
 {
     NEOPIXEL: 0x01
 };
@@ -84,7 +84,7 @@ const MbitMorePIOTCommand =
  * @readonly
  * @enum {number}
  */
-const MbitMoreDataFormat = {
+const pcratchiot_DataFormat = {
     CONFIG: 0x10, // not used at this version
     PIN_EVENT: 0x11,
     ACTION_EVENT: 0x12,
@@ -97,7 +97,7 @@ const MbitMoreDataFormat = {
  * @readonly
  * @enum {number}
  */
-const MbitMoreActionEvent = {
+const pcratchiot_ActionEvent = {
     BUTTON: 0x01,
     GESTURE: 0x02
 };
@@ -107,7 +107,7 @@ const MbitMoreActionEvent = {
  * @readonly
  * @enum {string}
  */
-const MbitMorePinMode = {
+const pcratchiot_PinMode = {
     INPUT: 'INPUT',
     OUTPUT: 'OUTPUT',
     PWM: 'PWM',
@@ -120,7 +120,7 @@ const MbitMorePinMode = {
  * @readonly
  * @enum {string}
  */
-const MbitMoreButtonID = {
+const pcratchiot_ButtonID = {
     1: 'A',
     2: 'B',
     100: 'P0',
@@ -134,7 +134,7 @@ const MbitMoreButtonID = {
  * @readonly
  * @enum {number}
  */
-const MbitMoreButtonStateIndex = {
+const pcratchiot_ButtonStateIndex = {
     P0: 0,
     P1: 1,
     P2: 2,
@@ -148,7 +148,7 @@ const MbitMoreButtonStateIndex = {
  * @readonly
  * @enum {string}
  */
-const MbitMoreButtonEventID = {
+const pcratchiot_ButtonEventID = {
     1: 'DOWN',
     2: 'UP',
     3: 'CLICK',
@@ -162,7 +162,7 @@ const MbitMoreButtonEventID = {
  * @readonly
  * @enum {string}
  */
-const MbitMoreGestureID =
+const pcratchiot_GestureID =
 {
     1: 'TILT_UP',
     2: 'TILT_DOWN',
@@ -182,7 +182,7 @@ const MbitMoreGestureID =
  * @readonly
  * @enum {number}
  */
-const MbitMoreSendingDataType = {
+const pcratchiot_SendingDataType = {
     NUMBER: 1,
     TEXT: 2
 };
@@ -192,7 +192,7 @@ const MbitMoreSendingDataType = {
  * @readonly
  * @enum {number}
  */
-const MbitMoreConfig =
+const pcratchiot_Config =
 {
     MIC: 0x01,
     TOUCH: 0x02
@@ -203,7 +203,7 @@ const MbitMoreConfig =
  * @readonly
  * @enum {number}
  */
-const MbitMoreAudioCommand =
+const pcratchiot_AudioCommand =
 {
     STOP_TONE: 0x00,
     PLAY_TONE: 0x01
@@ -216,10 +216,10 @@ const MbitMoreAudioCommand =
 const BLETimeout = 4500;
 
 /**
- * A string to report to the BLE socket when the micro:bit has stopped receiving data.
+ * A string to report to the BLE socket when the Pcratch IoT has stopped receiving data.
  * @type {string}
  */
-const BLEDataStoppedError = 'micro:bit extension stopped receiving data';
+const BLEDataStoppedError = 'Pcratch IoT extension stopped receiving data';
 
 const MM_SERVICE = {
     ID: '0b50f3e4-607f-4151-9091-7d008d6ffc5c',
@@ -249,7 +249,7 @@ const AxisSymbol = {
 };
 
 /**
- * The unit-value of the gravitational acceleration from Micro:bit.
+ * The unit-value of the gravitational acceleration from Pcratch IoT.
  * @type {number}
  */
 const G = 1024;
@@ -312,7 +312,7 @@ export class PcratchIoT {
          * @private
          */
         this.buttonEvents = {};
-        Object.keys(MbitMoreButtonStateIndex).forEach(name => {
+        Object.keys(pcratchiot_ButtonStateIndex).forEach(name => {
             this.buttonEvents[name] = {};
         });
 
@@ -332,7 +332,7 @@ export class PcratchIoT {
         this._pinEvents = {};
 
         /**
-         * The most recently received data from micro:bit.
+         * The most recently received data from Pcratch IoT.
          * @type {Object} - Store of received data
          * @private
          */
@@ -408,7 +408,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Initialize configuration of the micro:bit.
+     * Initialize configuration of the Pcratch IoT.
      */
     initConfig () {
         this.config = {};
@@ -417,7 +417,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Start updating process for micro:bit state and motion.
+     * Start updating process for Pcratch IoT state and motion.
      */
     startUpdater () {
         if (this.updater) {
@@ -438,7 +438,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Stop updating process for micro:bit state and motion.
+     * Stop updating process for Pcratch IoT state and motion.
      */
     stopUpdater () {
         clearTimeout(this.updater);
@@ -458,7 +458,7 @@ export class PcratchIoT {
         }
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_DISPLAY << 5) | MbitMoreDisplayCommand.TEXT,
+                id: (BLECommand.CMD_DISPLAY << 5) | pcratchiot_DisplayCommand.TEXT,
                 message: new Uint8Array([
                     Math.min(255, (Math.max(0, delay) / 10)),
                     ...textData
@@ -469,7 +469,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Send display pixcels command to micro:bit.
+     * Send display pixcels command to Pcratch IoT.
      * @param {Array.<Array.<number>>} matrix - pattern to display.
      * @param {object} util - utility object provided by the runtime.
      * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
@@ -477,7 +477,7 @@ export class PcratchIoT {
     displayPixels (matrix, util) {
         const cmdSet = [
             {
-                id: (BLECommand.CMD_DISPLAY << 5) | MbitMoreDisplayCommand.PIXELS_0,
+                id: (BLECommand.CMD_DISPLAY << 5) | pcratchiot_DisplayCommand.PIXELS_0,
                 message: new Uint8Array([
                     ...matrix[0],
                     ...matrix[1],
@@ -485,7 +485,7 @@ export class PcratchIoT {
                 ])
             },
             {
-                id: (BLECommand.CMD_DISPLAY << 5) | MbitMoreDisplayCommand.PIXELS_1,
+                id: (BLECommand.CMD_DISPLAY << 5) | pcratchiot_DisplayCommand.PIXELS_1,
                 message: new Uint8Array([
                     ...matrix[3],
                     ...matrix[4]
@@ -498,15 +498,15 @@ export class PcratchIoT {
     /**
      * Set pull mode to the pin.
      * @param {number} pinIndex - index of the pin
-     * @param {MbitMorePullModeID} pullMode - pull mode to set
+     * @param {pcratchiot_PullModeID} pullMode - pull mode to set
      * @param {BlockUtility} util - utility object provided from the runtime
      * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
      */
     setPullMode (pinIndex, pullMode, util) {
-        this.config.pinMode[pinIndex] = MbitMorePinMode.INPUT;
+        this.config.pinMode[pinIndex] = pcratchiot_PinMode.INPUT;
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_PIN << 5) | MbitMorePinCommand.SET_PULL,
+                id: (BLECommand.CMD_PIN << 5) | pcratchiot_PinCommand.SET_PULL,
                 message: new Uint8Array([
                     pinIndex,
                     pullMode
@@ -524,10 +524,10 @@ export class PcratchIoT {
      * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
      */
     setPinOutput (pinIndex, level, util) {
-        this.config.pinMode[pinIndex] = MbitMorePinMode.OUTPUT;
+        this.config.pinMode[pinIndex] = pcratchiot_PinMode.OUTPUT;
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_PIN << 5) | MbitMorePinCommand.SET_OUTPUT,
+                id: (BLECommand.CMD_PIN << 5) | pcratchiot_PinCommand.SET_OUTPUT,
                 message: new Uint8Array(
                     [
                         pinIndex,
@@ -547,12 +547,12 @@ export class PcratchIoT {
      * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
      */
     setPinPWM (pinIndex, level, util) {
-        this.config.pinMode[pinIndex] = MbitMorePinMode.PWM;
+        this.config.pinMode[pinIndex] = pcratchiot_PinMode.PWM;
         const dataView = new DataView(new ArrayBuffer(2));
         dataView.setUint16(0, level, true);
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_PIN << 5) | MbitMorePinCommand.SET_PWM,
+                id: (BLECommand.CMD_PIN << 5) | pcratchiot_PinCommand.SET_PWM,
                 message: new Uint8Array(
                     [
                         pinIndex,
@@ -577,7 +577,7 @@ export class PcratchIoT {
      * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
      */
     setPinServo (pinIndex, angle, range, center, util) {
-        this.config.pinMode[pinIndex] = MbitMorePinMode.SERVO;
+        this.config.pinMode[pinIndex] = pcratchiot_PinMode.SERVO;
         if (!range || range < 0) range = 0;
         if (!center || center < 0) center = 0;
         const dataView = new DataView(new ArrayBuffer(6));
@@ -586,7 +586,7 @@ export class PcratchIoT {
         dataView.setUint16(4, center, true);
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_PIN << 5) | MbitMorePinCommand.SET_SERVO,
+                id: (BLECommand.CMD_PIN << 5) | pcratchiot_PinCommand.SET_SERVO,
                 message: new Uint8Array(
                     [
                         pinIndex,
@@ -686,9 +686,9 @@ export class PcratchIoT {
                     for (let i = 0; i < this.gpio.length; i++) {
                         this.digitalLevel[this.gpio[i]] = (gpioData >> this.gpio[i]) & 1;
                     }
-                    Object.keys(MbitMoreButtonStateIndex).forEach(
+                    Object.keys(pcratchiot_ButtonStateIndex).forEach(
                         name => {
-                            this.buttonState[name] = (gpioData >> (24 + MbitMoreButtonStateIndex[name])) & 1;
+                            this.buttonState[name] = (gpioData >> (24 + pcratchiot_ButtonStateIndex[name])) & 1;
                         });
                     this.lightLevel = dataView.getUint8(4);
                     this.temperature = dataView.getUint8(5) - 128;
@@ -700,7 +700,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Read temperature (integer in celsius) from the micro:bit cpu.
+     * Read temperature (integer in celsius) from the Pcratch IoT cpu.
      * @return {number} - degrees of temperature [centigrade].
      */
     readTemperature () {
@@ -726,7 +726,7 @@ export class PcratchIoT {
         }
         const sendPromise = this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_CONFIG << 5) | MbitMoreConfig.MIC,
+                id: (BLECommand.CMD_CONFIG << 5) | pcratchiot_Config.MIC,
                 message: new Uint8Array([(use ? 1 : 0)]) // use microphone
             }],
             util
@@ -757,7 +757,7 @@ export class PcratchIoT {
         volume = Math.round(volume * 0xff / 100);
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_AUDIO << 5) | MbitMoreAudioCommand.PLAY_TONE,
+                id: (BLECommand.CMD_AUDIO << 5) | pcratchiot_AudioCommand.PLAY_TONE,
                 message: new Uint8Array([
                     frequencyData.getUint8(0),
                     frequencyData.getUint8(1),
@@ -781,7 +781,7 @@ export class PcratchIoT {
         }
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_AUDIO << 5) | MbitMoreAudioCommand.STOP_TONE,
+                id: (BLECommand.CMD_AUDIO << 5) | pcratchiot_AudioCommand.STOP_TONE,
                 message: new Uint8Array([])
             }],
             util
@@ -841,7 +841,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Read pitch [degrees] of the micro:bit heading direction.
+     * Read pitch [degrees] of the Pcratch IoT heading direction.
      * @return {number} - degree of pitch.
      */
     readPitch () {
@@ -852,7 +852,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Read roll [degrees] of the micro:bit heading direction.
+     * Read roll [degrees] of the Pcratch IoT heading direction.
      * @return {number} - degree of roll.
      */
     readRoll () {
@@ -917,7 +917,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Start to scan Bluetooth LE devices to find micro:bit with MicroBit More service.
+     * Start to scan Bluetooth LE devices to find Pcratch IoT with MicroBit More service.
      */
     scanBLE () {
         const connectorClass = BLE;
@@ -927,6 +927,7 @@ export class PcratchIoT {
             {
                 filters: [
                     {namePrefix: 'BBC micro:bit'},
+                    {namePrefix: 'PcratchIoT'},
                     {services: [MM_SERVICE.ID]}
                 ]
             },
@@ -936,7 +937,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Start to scan USB serial devices to find micro:bit v2.
+     * Start to scan USB serial devices to find Pcratch IoT v2.
      */
     scanSerial () {
         this._ble = new WebSerial(
@@ -989,7 +990,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Disconnect from the micro:bit.
+     * Disconnect from the Pcratch IoT.
      */
     disconnect () {
         if (this._ble) {
@@ -1010,8 +1011,8 @@ export class PcratchIoT {
     }
 
     /**
-     * Return true if connected to the micro:bit.
-     * @return {boolean} - whether the micro:bit is connected.
+     * Return true if connected to the Pcratch IoT.
+     * @return {boolean} - whether the Pcratch IoT is connected.
      */
     isConnected () {
         let connected = false;
@@ -1022,7 +1023,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Send a command to micro:bit.
+     * Send a command to Pcratch IoT.
      * @param {object} command command to send.
      * @param {number} command.id ID of the command.
      * @param {Uint8Array} command.message Contents of the command.
@@ -1097,7 +1098,7 @@ export class PcratchIoT {
                     MM_SERVICE.ID,
                     MM_SERVICE.PIN_EVENT_CH,
                     this.onNotify);
-                if (this.hardware === MbitMoreHardwareVersion.MICROBIT_V1) {
+                if (this.hardware === pcratchiot_HardwareVersion.MICROBIT_V1) {
                     this.microbitUpdateInterval = 100; // milliseconds
                 } else {
                     this._ble.startNotifications(
@@ -1128,17 +1129,17 @@ export class PcratchIoT {
         const data = base64ToUint8Array(msg);
         const dataView = new DataView(data.buffer, 0);
         const dataFormat = dataView.getUint8(19);
-        if (dataFormat === MbitMoreDataFormat.ACTION_EVENT) {
+        if (dataFormat === pcratchiot_DataFormat.ACTION_EVENT) {
             const actionEventType = dataView.getUint8(0);
-            if (actionEventType === MbitMoreActionEvent.BUTTON) {
-                const buttonName = MbitMoreButtonID[dataView.getUint16(1, true)];
-                const eventName = MbitMoreButtonEventID[dataView.getUint8(3)];
+            if (actionEventType === pcratchiot_ActionEvent.BUTTON) {
+                const buttonName = pcratchiot_ButtonID[dataView.getUint16(1, true)];
+                const eventName = pcratchiot_ButtonEventID[dataView.getUint8(3)];
                 this.buttonEvents[buttonName][eventName] = dataView.getUint32(4, true); // Timestamp
-            } else if (actionEventType === MbitMoreActionEvent.GESTURE) {
-                const gestureName = MbitMoreGestureID[dataView.getUint8(1)];
+            } else if (actionEventType === pcratchiot_ActionEvent.GESTURE) {
+                const gestureName = pcratchiot_GestureID[dataView.getUint8(1)];
                 this.gestureEvents[gestureName] = dataView.getUint32(2, true); // Timestamp
             }
-        } else if (dataFormat === MbitMoreDataFormat.PIN_EVENT) {
+        } else if (dataFormat === pcratchiot_DataFormat.PIN_EVENT) {
             const pinIndex = dataView.getUint8(0);
             if (!this._pinEvents[pinIndex]) {
                 this._pinEvents[pinIndex] = {};
@@ -1149,14 +1150,14 @@ export class PcratchIoT {
                 value: dataView.getUint32(2, true), // timesamp of the edge or duration of the pulse
                 timestamp: Date.now() // received time
             };
-        } else if (dataFormat === MbitMoreDataFormat.DATA_NUMBER) {
+        } else if (dataFormat === pcratchiot_DataFormat.DATA_NUMBER) {
             const label = new TextDecoder().decode(data.slice(0, 8).filter(char => (char !== 0)));
             this.receivedData[label] =
             {
                 content: dataView.getFloat32(8, true),
                 timestamp: Date.now()
             };
-        } else if (dataFormat === MbitMoreDataFormat.DATA_TEXT) {
+        } else if (dataFormat === pcratchiot_DataFormat.DATA_TEXT) {
             const label = new TextDecoder().decode(data.slice(0, 8).filter(char => (char !== 0)));
             this.receivedData[label] =
             {
@@ -1215,7 +1216,7 @@ export class PcratchIoT {
      * @return {boolean} - true when it is touch-mode
      */
     isPinTouchMode (pinIndex) {
-        return this.config.pinMode[pinIndex] === MbitMorePinMode.TOUCH;
+        return this.config.pinMode[pinIndex] === pcratchiot_PinMode.TOUCH;
     }
 
     /**
@@ -1233,7 +1234,7 @@ export class PcratchIoT {
         }
         const sendPromise = this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_CONFIG << 5) | MbitMoreConfig.TOUCH,
+                id: (BLECommand.CMD_CONFIG << 5) | pcratchiot_Config.TOUCH,
                 message: new Uint8Array([
                     pinIndex,
                     1
@@ -1244,7 +1245,7 @@ export class PcratchIoT {
         if (sendPromise) {
             return sendPromise
                 .then(() => {
-                    this.config.pinMode[pinIndex] = MbitMorePinMode.TOUCH;
+                    this.config.pinMode[pinIndex] = pcratchiot_PinMode.TOUCH;
                 });
         }
         return;
@@ -1264,8 +1265,8 @@ export class PcratchIoT {
 
     /**
      * Return the last timestamp of the button event or undefined if the event is not received.
-     * @param {MbitMoreButtonName} buttonName - name of the button to get the event.
-     * @param {MbitMoreButtonEventName} eventName - name of event to get.
+     * @param {pcratchiot_ButtonName} buttonName - name of the button to get the event.
+     * @param {pcratchiot_ButtonEventName} eventName - name of event to get.
      * @return {?number} Timestamp of the last event or null.
      */
     getButtonEventTimestamp (buttonName, eventName) {
@@ -1277,7 +1278,7 @@ export class PcratchIoT {
 
     /**
      * Return the last timestamp of the gesture event or undefined if the event is not received.
-     * @param {MbitMoreGestureName} gestureName - name of the event.
+     * @param {pcratchiot_GestureName} gestureName - name of the event.
      * @return {?number} Timestamp of the last event or null.
      */
     getGestureEventTimestamp (gestureName) {
@@ -1290,7 +1291,7 @@ export class PcratchIoT {
     /**
      * Return the last value of the pin event or undefined if the event was not received.
      * @param {number} pinIndex - index of the pin to get the event.
-     * @param {MbitMorePinEvent} event - event to get.
+     * @param {pcratchiot_PinEvent} event - event to get.
      * @return {?number} Timestamp of the last event or null.
      */
     getPinEventValue (pinIndex, event) {
@@ -1303,7 +1304,7 @@ export class PcratchIoT {
     /**
      * Return the last timestamp of the pin event or undefined if the event was not received.
      * @param {number} pinIndex - index of the pin to get the event.
-     * @param {MbitMorePinEvent} event - event to get.
+     * @param {pcratchiot_PinEvent} event - event to get.
      * @return {?number} Timestamp of the last event or null.
      */
     getPinEventTimestamp (pinIndex, event) {
@@ -1316,14 +1317,14 @@ export class PcratchIoT {
     /**
      * Set event type to be get from the pin.
      * @param {number} pinIndex - Index of the pin to set.
-     * @param {MbitMorePinEventType} eventType - Event type to set.
+     * @param {pcratchiot_PinEventType} eventType - Event type to set.
      * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
      */
     listenPinEventType (pinIndex, eventType, util) {
         return this.sendCommandSet(
             [{
-                id: (BLECommand.CMD_PIN << 5) | MbitMorePinCommand.SET_EVENT,
+                id: (BLECommand.CMD_PIN << 5) | pcratchiot_PinCommand.SET_EVENT,
                 message: new Uint8Array([
                     pinIndex,
                     eventType
@@ -1334,7 +1335,7 @@ export class PcratchIoT {
     }
 
     /**
-     * Send data to micro:bit.
+     * Send data to Pcratch IoT.
      * @param {string} label - label of the data [ascii]
      * @param {string} content - content of the data [ascii | number]
      * @param {BlockUtility} util - utility object provided by the runtime.
@@ -1348,13 +1349,13 @@ export class PcratchIoT {
         let contentData;
         let type;
         if (Number.isNaN(contentNumber)) {
-            type = MbitMoreSendingDataType.TEXT;
+            type = pcratchiot_SendingDataType.TEXT;
             contentData = content
                 .split('')
                 .map(ascii => ascii.charCodeAt(0))
                 .slice(0, 11);
         } else {
-            type = MbitMoreSendingDataType.NUMBER;
+            type = pcratchiot_SendingDataType.NUMBER;
             const dataView = new DataView(new ArrayBuffer(4));
             dataView.setFloat32(0, contentNumber, true);
             contentData = [
@@ -1420,7 +1421,7 @@ export class PcratchIoT {
         }
         // NeoPixel の色を設定するためのコマンドを作成
         const command = {
-            id: (BLECommand.CMD_PIOT << 5) | MbitMorePIOTCommand.NEOPIXEL,
+            id: (BLECommand.CMD_PIOT << 5) | pcratchiot_PIOTCommand.NEOPIXEL,
             message: new Uint8Array([n, r, g, b])
         };
         // コマンドを送信
