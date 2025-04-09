@@ -1061,7 +1061,7 @@ export class PcratchIoT {
                 const command = commands[index];
                 this.sendOneCommand(command)
                     .then(() => {
-                        setTimeout(() => processNextCommand(index + 1), 1); // 1ms: sendCommandInterval
+                        setTimeout(() => processNextCommand(index + 1), 10); // 1ms: sendCommandInterval
                     })
                     .catch(error => {
                         console.error('Error processing command:', error);

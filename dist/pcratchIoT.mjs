@@ -4263,7 +4263,7 @@ var PcratchIoT = /*#__PURE__*/function () {
           _this7.sendOneCommand(command).then(function () {
             setTimeout(function () {
               return _processNextCommand(index + 1);
-            }, 1); // 1ms: sendCommandInterval
+            }, 10); // 1ms: sendCommandInterval
           }).catch(function (error) {
             console.error('Error processing command:', error);
             reject(error);
