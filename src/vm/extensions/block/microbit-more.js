@@ -365,6 +365,13 @@ export class PcratchIoT {
         this.bleBusy = true;
 
         /**
+         * sendOneCommand をキューに対応させる
+         * 
+         */
+        this.bleQueue = [];
+        this.bleQueueBusy = false;
+
+        /**
          * ID for a timeout which is used to clear the busy flag if it has been
          * true for a long time.
          */
@@ -1023,25 +1030,58 @@ export class PcratchIoT {
     }
 
     /**
+     * sendOneCommand をキューに追加する
+     */
+    enqueueBLEOperation(operation) {
+        return new Promise((resolve, reject) => {
+            this.bleQueue.push({ operation, resolve, reject });
+            this.processBLEQueue();
+        });
+    }
+    
+    processBLEQueue() {
+        if (this.bleQueueBusy || this.bleQueue.length === 0) {
+            return;
+        }
+    
+        const { operation, resolve, reject } = this.bleQueue.shift();
+        this.bleQueueBusy = true;
+    
+        operation()
+            .then(result => {
+                this.bleQueueBusy = false; // 操作が完了したらフラグをリセット
+                resolve(result);
+                this.processBLEQueue(); // 次の操作を処理
+            })
+            .catch(error => {
+                this.bleQueueBusy = false; // エラー時にもフラグをリセット
+                reject(error);
+                this.processBLEQueue(); // 次の操作を処理
+            });
+    }
+
+    /**
      * Send a command to Pcratch IoT.
      * @param {object} command command to send.
      * @param {number} command.id ID of the command.
      * @param {Uint8Array} command.message Contents of the command.
      * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
      */
-    sendOneCommand (command) {
+    sendOneCommand(command) {
         console.log('sendOneCommand M4');
-        const data = new Uint8Array([
-            command.id,
-            ...command.message
-        ])
-        return this._ble.write(
-            MM_SERVICE.ID,
-            MM_SERVICE.COMMAND_CH,
-            data,
-            null,
-            true // true // resolve after peripheral's response. // false
-        )
+        return this.enqueueBLEOperation(() => {
+            const data = new Uint8Array([
+                command.id,
+                ...command.message
+            ]);
+            return this._ble.write(
+                MM_SERVICE.ID,
+                MM_SERVICE.COMMAND_CH,
+                data,
+                null,
+                true    // resolve after peripheral's response.
+            );
+        });
     }
 
     /**
@@ -1061,7 +1101,7 @@ export class PcratchIoT {
                 const command = commands[index];
                 this.sendOneCommand(command)
                     .then(() => {
-                        setTimeout(() => processNextCommand(index + 1), 10); // 1ms: sendCommandInterval
+                        setTimeout(() => processNextCommand(index + 1), 1); // 1ms: sendCommandInterval
                     })
                     .catch(error => {
                         console.error('Error processing command:', error);

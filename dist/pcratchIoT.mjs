@@ -31,7 +31,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v0.1.10';
+var version = 'v0.1.11';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -3606,6 +3606,13 @@ var PcratchIoT = /*#__PURE__*/function () {
     this.bleBusy = true;
 
     /**
+     * sendOneCommand をキューに対応させる
+     * 
+     */
+    this.bleQueue = [];
+    this.bleQueueBusy = false;
+
+    /**
      * ID for a timeout which is used to clear the busy flag if it has been
      * true for a long time.
      */
@@ -4228,6 +4235,45 @@ var PcratchIoT = /*#__PURE__*/function () {
     }
 
     /**
+     * sendOneCommand をキューに追加する
+     */
+  }, {
+    key: "enqueueBLEOperation",
+    value: function enqueueBLEOperation(operation) {
+      var _this7 = this;
+      return new Promise(function (resolve, reject) {
+        _this7.bleQueue.push({
+          operation: operation,
+          resolve: resolve,
+          reject: reject
+        });
+        _this7.processBLEQueue();
+      });
+    }
+  }, {
+    key: "processBLEQueue",
+    value: function processBLEQueue() {
+      var _this8 = this;
+      if (this.bleQueueBusy || this.bleQueue.length === 0) {
+        return;
+      }
+      var _this$bleQueue$shift = this.bleQueue.shift(),
+        operation = _this$bleQueue$shift.operation,
+        resolve = _this$bleQueue$shift.resolve,
+        reject = _this$bleQueue$shift.reject;
+      this.bleQueueBusy = true;
+      operation().then(function (result) {
+        _this8.bleQueueBusy = false; // 操作が完了したらフラグをリセット
+        resolve(result);
+        _this8.processBLEQueue(); // 次の操作を処理
+      }).catch(function (error) {
+        _this8.bleQueueBusy = false; // エラー時にもフラグをリセット
+        reject(error);
+        _this8.processBLEQueue(); // 次の操作を処理
+      });
+    }
+
+    /**
      * Send a command to Pcratch IoT.
      * @param {object} command command to send.
      * @param {number} command.id ID of the command.
@@ -4237,10 +4283,13 @@ var PcratchIoT = /*#__PURE__*/function () {
   }, {
     key: "sendOneCommand",
     value: function sendOneCommand(command) {
+      var _this9 = this;
       console.log('sendOneCommand M4');
-      var data = new Uint8Array([command.id].concat(_toConsumableArray(command.message)));
-      return this._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, true // true // resolve after peripheral's response. // false
-      );
+      return this.enqueueBLEOperation(function () {
+        var data = new Uint8Array([command.id].concat(_toConsumableArray(command.message)));
+        return _this9._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, true // resolve after peripheral's response.
+        );
+      });
     }
 
     /**
@@ -4252,7 +4301,7 @@ var PcratchIoT = /*#__PURE__*/function () {
   }, {
     key: "sendCommandSet",
     value: function sendCommandSet(commands, util) {
-      var _this7 = this;
+      var _this10 = this;
       return new Promise(function (resolve, reject) {
         var _processNextCommand = function processNextCommand(index) {
           if (index >= commands.length) {
@@ -4260,10 +4309,10 @@ var PcratchIoT = /*#__PURE__*/function () {
             return;
           }
           var command = commands[index];
-          _this7.sendOneCommand(command).then(function () {
+          _this10.sendOneCommand(command).then(function () {
             setTimeout(function () {
               return _processNextCommand(index + 1);
-            }, 10); // 1ms: sendCommandInterval
+            }, 1); // 1ms: sendCommandInterval
           }).catch(function (error) {
             console.error('Error processing command:', error);
             reject(error);
@@ -4279,35 +4328,35 @@ var PcratchIoT = /*#__PURE__*/function () {
   }, {
     key: "_onConnect",
     value: function _onConnect() {
-      var _this8 = this;
+      var _this11 = this;
       this._ble.read(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, false).then(function (result) {
         if (!result) {
           throw new Error('Config is not readable');
         }
         var data = base64ToUint8Array(result.message);
         var dataView = new DataView(data.buffer, 0);
-        _this8.hardware = dataView.getUint8(0);
-        _this8.protocol = dataView.getUint8(1);
-        _this8.route = dataView.getUint8(2);
-        _this8._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this8.onNotify);
-        _this8._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this8.onNotify);
-        if (_this8.hardware === pcratchiot_HardwareVersion.MICROBIT_V1) {
-          _this8.microbitUpdateInterval = 100; // milliseconds
+        _this11.hardware = dataView.getUint8(0);
+        _this11.protocol = dataView.getUint8(1);
+        _this11.route = dataView.getUint8(2);
+        _this11._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this11.onNotify);
+        _this11._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this11.onNotify);
+        if (_this11.hardware === pcratchiot_HardwareVersion.MICROBIT_V1) {
+          _this11.microbitUpdateInterval = 100; // milliseconds
         } else {
-          _this8._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this8.onNotify);
-          _this8.microbitUpdateInterval = 50; // milliseconds
+          _this11._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this11.onNotify);
+          _this11.microbitUpdateInterval = 50; // milliseconds
         }
-        if (_this8.route === CommunicationRoute.SERIAL) {
-          _this8.sendCommandInterval = 100; // milliseconds
+        if (_this11.route === CommunicationRoute.SERIAL) {
+          _this11.sendCommandInterval = 100; // milliseconds
         } else {
-          _this8.sendCommandInterval = 30; // milliseconds
+          _this11.sendCommandInterval = 30; // milliseconds
         }
-        _this8.initConfig();
-        _this8.bleBusy = false;
-        _this8.startUpdater();
-        _this8.resetConnectionTimeout();
+        _this11.initConfig();
+        _this11.bleBusy = false;
+        _this11.startUpdater();
+        _this11.resetConnectionTimeout();
       }).catch(function (err) {
-        return _this8._ble.handleDisconnectError(err);
+        return _this11._ble.handleDisconnectError(err);
       });
     }
 
@@ -4371,10 +4420,10 @@ var PcratchIoT = /*#__PURE__*/function () {
   }, {
     key: "resetConnectionTimeout",
     value: function resetConnectionTimeout() {
-      var _this9 = this;
+      var _this12 = this;
       if (this._timeoutID) window.clearTimeout(this._timeoutID);
       this._timeoutID = window.setTimeout(function () {
-        return _this9._ble.handleDisconnectError(BLEDataStoppedError);
+        return _this12._ble.handleDisconnectError(BLEDataStoppedError);
       }, BLETimeout);
     }
 
@@ -4438,7 +4487,7 @@ var PcratchIoT = /*#__PURE__*/function () {
   }, {
     key: "configTouchPin",
     value: function configTouchPin(pinIndex, util) {
-      var _this10 = this;
+      var _this13 = this;
       if (!this.isConnected()) {
         return Promise.resolve();
       }
@@ -4451,7 +4500,7 @@ var PcratchIoT = /*#__PURE__*/function () {
       }], util);
       if (sendPromise) {
         return sendPromise.then(function () {
-          _this10.config.pinMode[pinIndex] = pcratchiot_PinMode.TOUCH;
+          _this13.config.pinMode[pinIndex] = pcratchiot_PinMode.TOUCH;
         });
       }
       return;
