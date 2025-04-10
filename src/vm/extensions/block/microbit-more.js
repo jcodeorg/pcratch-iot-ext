@@ -1083,6 +1083,28 @@ export class PcratchIoT {
             );
         });
     }
+    sendOneCommand(command) {
+        console.log('sendOneCommand M4');
+        return this.enqueueBLEOperation(() => {
+            if (!this._ble) {
+                console.error('BLE connection is not initialized at sendOneCommand.');
+                return Promise.reject(new Error('BLE connection is not initialized.'));
+            }
+    
+            const data = new Uint8Array([
+                command.id,
+                ...command.message
+            ]);
+    
+            return this._ble.write(
+                MM_SERVICE.ID,
+                MM_SERVICE.COMMAND_CH,
+                data,
+                null,
+                true // resolve after peripheral's response.
+            );
+        });
+    }
 
     /**
      * コマンドを順次処理し、すべてのコマンドが終了したら解決するプロミスを返却

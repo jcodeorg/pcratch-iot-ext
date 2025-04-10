@@ -31,7 +31,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v0.1.11';
+var version = 'v0.1.12';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -4286,6 +4286,10 @@ var PcratchIoT = /*#__PURE__*/function () {
       var _this9 = this;
       console.log('sendOneCommand M4');
       return this.enqueueBLEOperation(function () {
+        if (!_this9._ble) {
+          console.error('BLE connection is not initialized at sendOneCommand.');
+          return Promise.reject(new Error('BLE connection is not initialized.'));
+        }
         var data = new Uint8Array([command.id].concat(_toConsumableArray(command.message)));
         return _this9._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, true // resolve after peripheral's response.
         );
