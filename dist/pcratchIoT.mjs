@@ -31,7 +31,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v0.1.12';
+var version = 'v1.0.1';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -47,7 +47,7 @@ var entry = {
   insetIconURL: img$3,
   get description() {
     return formatMessage$1({
-      defaultMessage: 'Play with all functions of Pcratch IoT.',
+      defaultMessage: 'Play with all of Pcratch IoT.',
       description: "Description for the 'Pcratch Iot' extension",
       id: 'pcratchIoT.entry.description'
     });

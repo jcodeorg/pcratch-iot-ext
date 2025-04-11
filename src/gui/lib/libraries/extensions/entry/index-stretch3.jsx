@@ -15,7 +15,7 @@ const translations =
 {
     "en": {
         "pcratchIoT.entry.name": "Pcratch IoT",
-        "pcratchIoT.entry.description": `Play with all functions of Pcratch IoT.(${version})`
+        "pcratchIoT.entry.description": `Play with functions of Pcratch IoT(v0.1.12).(${version})`
     },
     "ja": {
         "pcratchIoT.entry.name": "ぷくらっち IoT",
@@ -42,7 +42,7 @@ const entry = {
     insetIconURL: insetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Play with all functions of Pcratch IoT."
+            defaultMessage="Play with Pcratch IoT(v0.1.12)."
             description="Description for the 'Pcratch IoT' extension"
             id="pcratchIoT.entry.description"
         />

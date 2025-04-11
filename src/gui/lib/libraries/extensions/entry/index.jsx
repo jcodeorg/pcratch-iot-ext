@@ -10,7 +10,7 @@ import pcratchIoTConnectionIconURL from './connection-icon.svg';
 import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 import translations from './translations.json';
 
-const version = 'v0.1.12';
+const version = 'v1.0.1';
 
 const entry = {
     get name () {
@@ -27,7 +27,7 @@ const entry = {
     insetIconURL: pcratchIoTInsetIconURL,
     get description () {
         return formatMessage({
-            defaultMessage: 'Play with all functions of Pcratch IoT.',
+            defaultMessage: 'Play with all of Pcratch IoT.',
             description: "Description for the 'Pcratch Iot' extension",
             id: 'pcratchIoT.entry.description'
         });
