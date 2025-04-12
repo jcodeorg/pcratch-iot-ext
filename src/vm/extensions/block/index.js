@@ -576,6 +576,7 @@ class pcratchIoTBlocks {
      */
     get PIN_EVENT_MENU () {
         return [
+            /*
             {
                 text: formatMessage({
                     id: 'pcratch_iot.pinEventMenu.pulseLow',
@@ -592,6 +593,7 @@ class pcratchIoTBlocks {
                 }),
                 value: 'PULSE_HIGH'
             },
+            */
             {
                 text: formatMessage({
                     id: 'pcratch_iot.pinEventMenu.fall',
@@ -1194,6 +1196,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                */
                 {
                     opcode: 'whenPinEvent',
                     text: formatMessage({
@@ -1207,7 +1210,7 @@ class pcratchIoTBlocks {
                         EVENT: {
                             type: ArgumentType.STRING,
                             menu: 'pinEventMenu',
-                            defaultValue: 'PULSE_LOW'
+                            defaultValue: 'FALL'
                         },
                         PIN: {
                             type: ArgumentType.STRING,
@@ -1216,6 +1219,7 @@ class pcratchIoTBlocks {
                         }
                     }
                 },
+                /*
                 {
                     opcode: 'getPinEventValue',
                     text: formatMessage({
