@@ -345,7 +345,7 @@ export class PcratchIoT {
         });
 
         // this.gpio = [0, 1, 2, 8, 12, 13, 14, 15, 16];
-        this.gpio = [0, 1, 2, 16, 17, 18, 19, 20, 21];
+        this.gpio = [0, 1, 2, 15, 16, 17, 18, 19, 20, 21];
         this.gpio.forEach(pinIndex => {
             this.digitalLevel[pinIndex] = 0;
         });

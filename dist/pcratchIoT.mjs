@@ -31,7 +31,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v1.0.1';
+var version = 'v1.3.1';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -3586,7 +3586,7 @@ var PcratchIoT = /*#__PURE__*/function () {
     });
 
     // this.gpio = [0, 1, 2, 8, 12, 13, 14, 15, 16];
-    this.gpio = [0, 1, 2, 16, 17, 18, 19, 20, 21];
+    this.gpio = [0, 1, 2, 15, 16, 17, 18, 19, 20, 21];
     this.gpio.forEach(function (pinIndex) {
       _this.digitalLevel[pinIndex] = 0;
     });
