@@ -32,7 +32,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v1.3.2';
+var version = 'v1.4.4';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -906,8 +906,8 @@ var ja = {
 	"pcratch_iot.pinEventTypeMenu.pulse": "パルスイベントを受ける",
 	"pcratch_iot.pinEventTypeMenu.touch": "タッチイベントを受ける",
 	"pcratch_iot.whenPinEvent": "[PIN] が [EVENT] 変化したとき",
-	"pcratch_iot.pinEventMenu.rise": "0から1へ",
-	"pcratch_iot.pinEventMenu.fall": "1から0へ",
+	"pcratch_iot.pinEventMenu.rise": "離された",
+	"pcratch_iot.pinEventMenu.fall": "押された",
 	"pcratch_iot.pinEventMenu.pulseHigh": "ハイパルス",
 	"pcratch_iot.pinEventMenu.pulseLow": "ローパルス",
 	"pcratch_iot.getPinEventValue": "[PIN] の [EVENT]",
@@ -1013,8 +1013,8 @@ var translations = {
 	"pcratch_iot.pinEventTypeMenu.pulse": "パルスイベントをうける",
 	"pcratch_iot.pinEventTypeMenu.touch": "タッチイベントをうける",
 	"pcratch_iot.whenPinEvent": "[PIN] で [EVENT] イベントがおきたとき",
-	"pcratch_iot.pinEventMenu.rise": "ライズエッジ",
-	"pcratch_iot.pinEventMenu.fall": "フォールエッジ",
+	"pcratch_iot.pinEventMenu.rise": "はなされた",
+	"pcratch_iot.pinEventMenu.fall": "おされた",
 	"pcratch_iot.pinEventMenu.pulseHigh": "ハイパルス",
 	"pcratch_iot.pinEventMenu.pulseLow": "ローパルス",
 	"pcratch_iot.getPinEventValue": "[PIN] の [EVENT]",
@@ -5240,21 +5240,26 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
   }, {
     key: "PIN_EVENT_MENU",
     get: function get() {
-      return [{
-        text: formatMessage({
-          id: 'pcratch_iot.pinEventMenu.pulseLow',
-          default: 'low pulse',
-          description: 'label for low pulse event'
-        }),
-        value: 'PULSE_LOW'
-      }, {
-        text: formatMessage({
-          id: 'pcratch_iot.pinEventMenu.pulseHigh',
-          default: 'high pulse',
-          description: 'label for high pulse event'
-        }),
-        value: 'PULSE_HIGH'
-      }, {
+      return [
+      /*
+      {
+          text: formatMessage({
+              id: 'pcratch_iot.pinEventMenu.pulseLow',
+              default: 'low pulse',
+              description: 'label for low pulse event'
+          }),
+          value: 'PULSE_LOW'
+      },
+      {
+          text: formatMessage({
+              id: 'pcratch_iot.pinEventMenu.pulseHigh',
+              default: 'high pulse',
+              description: 'label for high pulse event'
+          }),
+          value: 'PULSE_HIGH'
+      },
+      */
+      {
         text: formatMessage({
           id: 'pcratch_iot.pinEventMenu.fall',
           default: 'fall',
@@ -5795,27 +5800,29 @@ var pcratchIoTBlocks = /*#__PURE__*/function () {
                 }
             }
         },
+        */
         {
-            opcode: 'whenPinEvent',
-            text: formatMessage({
-                id: 'pcratch_iot.whenPinEvent',
-                default: 'when catch [EVENT] at pin [PIN]',
-                description: 'when catch the event at the pin'
-             }),
-            blockType: BlockType.HAT,
-            arguments: {
-                EVENT: {
-                    type: ArgumentType.STRING,
-                    menu: 'pinEventMenu',
-                    defaultValue: 'PULSE_LOW'
-                },
-                PIN: {
-                    type: ArgumentType.STRING,
-                    menu: 'gpio',
-                    defaultValue: '0'
-                }
+          opcode: 'whenPinEvent',
+          text: formatMessage({
+            id: 'pcratch_iot.whenPinEvent',
+            default: 'when catch [EVENT] at pin [PIN]',
+            description: 'when catch the event at the pin'
+          }),
+          blockType: blockType.HAT,
+          arguments: {
+            EVENT: {
+              type: argumentType.STRING,
+              menu: 'pinEventMenu',
+              defaultValue: 'FALL'
+            },
+            PIN: {
+              type: argumentType.STRING,
+              menu: 'gpio',
+              defaultValue: '0'
             }
+          }
         },
+        /*
         {
             opcode: 'getPinEventValue',
             text: formatMessage({
