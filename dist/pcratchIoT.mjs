@@ -16,7 +16,8 @@ var en = {
 };
 var ja$1 = {
 	"pcratchIoT.entry.name": "ぷくらっち IoT",
-	"pcratchIoT.entry.description": "ぷくらっちIoTのすべての機能で遊ぶ。"
+	"pcratchIoT.entry.description": "ぷくらっちIoTのすべての機能で遊ぶ。",
+	"gui.extension.pcratchIoT.connectingMessage": "接続"
 };
 var translations$1 = {
 	de: de$1,
@@ -31,7 +32,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v1.3.1';
+var version = 'v1.3.2';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -926,7 +927,8 @@ var ja = {
 	"pcratch_iot.selectCommunicationRoute.connect": "つなぐ",
 	"pcratch_iot.selectCommunicationRoute.cancel": "やめる",
 	"pcratch_iot.getRGB": "RGB [R] [G] [B]",
-	"pcratch_iot.setNeoPixcelColor": "NP-LED [N] を [COLOR] にする"
+	"pcratch_iot.setNeoPixcelColor": "NP-LED [N] を [COLOR] にする",
+	"gui.extension.pcratchIoT.connectingMessage": "接続2"
 };
 var pt = {
 	"pcratch_iot.name": "Pcratch IoT",
