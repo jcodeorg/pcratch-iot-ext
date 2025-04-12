@@ -175,7 +175,8 @@
     "pcratch_iot.selectCommunicationRoute.connect": "つなぐ",
     "pcratch_iot.selectCommunicationRoute.cancel": "やめる",
     "pcratch_iot.getRGB": "RGB [R] [G] [B]",
-    "pcratch_iot.setNeoPixcelColor": "NP-LED [N] を [COLOR] にする"
+    "pcratch_iot.setNeoPixcelColor": "NP-LED [N] を [COLOR] にする",
+    "gui.extension.pcratchIoT.connectingMessage": "接続2"
   },
   "ja-Hira": {
     "pcratch_iot.name": "ぷくらっちIoT",

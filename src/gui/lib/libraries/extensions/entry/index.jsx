@@ -10,7 +10,7 @@ import pcratchIoTConnectionIconURL from './connection-icon.svg';
 import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 import translations from './translations.json';
 
-const version = 'v1.3.1';
+const version = 'v1.3.2';
 
 const entry = {
     get name () {

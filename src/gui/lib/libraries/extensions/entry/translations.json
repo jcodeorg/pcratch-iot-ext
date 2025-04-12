@@ -9,7 +9,8 @@
   },
   "ja": {
     "pcratchIoT.entry.name": "ぷくらっち IoT",
-    "pcratchIoT.entry.description": "ぷくらっちIoTのすべての機能で遊ぶ。"
+    "pcratchIoT.entry.description": "ぷくらっちIoTのすべての機能で遊ぶ。",
+    "gui.extension.pcratchIoT.connectingMessage": "接続"
   },
   "ja-Hira": {
     "pcratchIoT.entry.name": "ぷくらっち IoT",
