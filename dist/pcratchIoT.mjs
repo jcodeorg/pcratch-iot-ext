@@ -32,7 +32,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v1.4.5.1';
+var version = 'v1.4.5.2';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -887,7 +887,7 @@ var ja = {
 	"pcratch_iot.analogValue": "[PIN] のアナログレベル",
 	"pcratch_iot.setPullMode": "[PIN] を [MODE] 入力にする",
 	"pcratch_iot.setDigitalOut": "[PIN] に [LEVEL] を出力する",
-	"pcratch_iot.setAnalogOut": "[PIN] を PWM 出力 [LEVEL] %にする",
+	"pcratch_iot.setAnalogOut": "[PIN] にPWM [LEVEL] %で出力する",
 	"pcratch_iot.playTone": "[FREQ] Hzの音を [VOL] %の大きさで鳴らす",
 	"pcratch_iot.stopTone": "音を止める",
 	"pcratch_iot.setServo": "[PIN] をサーボ [ANGLE] 度にする",
@@ -994,7 +994,7 @@ var translations = {
 	"pcratch_iot.analogValue": "[PIN] のアナログレベル",
 	"pcratch_iot.setPullMode": "[PIN] を [MODE] にゅうりょくにする",
 	"pcratch_iot.setDigitalOut": "[PIN] をデジタルしゅつりょく [LEVEL] にする",
-	"pcratch_iot.setAnalogOut": "[PIN] をPWMしゅつりょく [LEVEL] パーセントにする",
+	"pcratch_iot.setAnalogOut": "[PIN] にPWM [LEVEL] パーセントでしゅつりょくする",
 	"pcratch_iot.playTone": "[FREQ] ヘルツのおとを [VOL] パーセントの大きさで鳴らす",
 	"pcratch_iot.stopTone": "おとをとめる",
 	"pcratch_iot.setServo": "[PIN] をサーボ [ANGLE] どにする",
