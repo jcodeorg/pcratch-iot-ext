@@ -32,7 +32,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v1.4.4';
+var version = 'v1.4.5.1';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -905,9 +905,9 @@ var ja = {
 	"pcratch_iot.pinEventTypeMenu.edge": "エッジイベントを受ける",
 	"pcratch_iot.pinEventTypeMenu.pulse": "パルスイベントを受ける",
 	"pcratch_iot.pinEventTypeMenu.touch": "タッチイベントを受ける",
-	"pcratch_iot.whenPinEvent": "[PIN] が [EVENT] 変化したとき",
-	"pcratch_iot.pinEventMenu.rise": "離された",
-	"pcratch_iot.pinEventMenu.fall": "押された",
+	"pcratch_iot.whenPinEvent": "[PIN] で [EVENT] が発生したとき",
+	"pcratch_iot.pinEventMenu.rise": "立ち上がりエッジ",
+	"pcratch_iot.pinEventMenu.fall": "立ち下がりエッジ",
 	"pcratch_iot.pinEventMenu.pulseHigh": "ハイパルス",
 	"pcratch_iot.pinEventMenu.pulseLow": "ローパルス",
 	"pcratch_iot.getPinEventValue": "[PIN] の [EVENT]",
@@ -1012,9 +1012,9 @@ var translations = {
 	"pcratch_iot.pinEventTypeMenu.edge": "エッジイベントをうける",
 	"pcratch_iot.pinEventTypeMenu.pulse": "パルスイベントをうける",
 	"pcratch_iot.pinEventTypeMenu.touch": "タッチイベントをうける",
-	"pcratch_iot.whenPinEvent": "[PIN] で [EVENT] イベントがおきたとき",
-	"pcratch_iot.pinEventMenu.rise": "はなされた",
-	"pcratch_iot.pinEventMenu.fall": "おされた",
+	"pcratch_iot.whenPinEvent": "[PIN] で [EVENT] がはっせいしたとき",
+	"pcratch_iot.pinEventMenu.rise": "たちあがりエッジ",
+	"pcratch_iot.pinEventMenu.fall": "たちさがりエッジ",
 	"pcratch_iot.pinEventMenu.pulseHigh": "ハイパルス",
 	"pcratch_iot.pinEventMenu.pulseLow": "ローパルス",
 	"pcratch_iot.getPinEventValue": "[PIN] の [EVENT]",
