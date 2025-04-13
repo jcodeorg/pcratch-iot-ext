@@ -32,7 +32,7 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
-var version = 'v1.4.5.2';
+var version = 'v1.4.5.3';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
@@ -4249,7 +4249,9 @@ var PcratchIoT = /*#__PURE__*/function () {
           resolve: resolve,
           reject: reject
         });
-        _this7.processBLEQueue();
+        if (!_this7.bleQueueBusy) {
+          _this7.processBLEQueue(); // キュー処理を開始
+        }
       });
     }
   }, {
@@ -4264,13 +4266,22 @@ var PcratchIoT = /*#__PURE__*/function () {
         resolve = _this$bleQueue$shift.resolve,
         reject = _this$bleQueue$shift.reject;
       this.bleQueueBusy = true;
-      operation().then(function (result) {
-        _this8.bleQueueBusy = false; // 操作が完了したらフラグをリセット
-        resolve(result);
+      var timeout = setTimeout(function () {
+        console.error('BLE operation timed out');
+        _this8.bleQueueBusy = false;
+        reject(new Error('BLE operation timed out'));
         _this8.processBLEQueue(); // 次の操作を処理
+      }, 5000); // 5秒のタイムアウト
+
+      Promise.resolve(operation()).then(function (result) {
+        clearTimeout(timeout); // タイムアウトをクリア
+        resolve(result);
       }).catch(function (error) {
-        _this8.bleQueueBusy = false; // エラー時にもフラグをリセット
+        clearTimeout(timeout); // タイムアウトをクリア
+        console.error('Unexpected error in operation:', error);
         reject(error);
+      }).finally(function () {
+        _this8.bleQueueBusy = false; // 操作が完了したらフラグをリセット
         _this8.processBLEQueue(); // 次の操作を処理
       });
     }

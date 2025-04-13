@@ -1035,7 +1035,9 @@ export class PcratchIoT {
     enqueueBLEOperation(operation) {
         return new Promise((resolve, reject) => {
             this.bleQueue.push({ operation, resolve, reject });
-            this.processBLEQueue();
+            if (!this.bleQueueBusy) {
+                this.processBLEQueue(); // キュー処理を開始
+            }
         });
     }
     
@@ -1047,15 +1049,25 @@ export class PcratchIoT {
         const { operation, resolve, reject } = this.bleQueue.shift();
         this.bleQueueBusy = true;
     
-        operation()
+        const timeout = setTimeout(() => {
+            console.error('BLE operation timed out');
+            this.bleQueueBusy = false;
+            reject(new Error('BLE operation timed out'));
+            this.processBLEQueue(); // 次の操作を処理
+        }, 5000); // 5秒のタイムアウト
+    
+        Promise.resolve(operation())
             .then(result => {
-                this.bleQueueBusy = false; // 操作が完了したらフラグをリセット
+                clearTimeout(timeout); // タイムアウトをクリア
                 resolve(result);
-                this.processBLEQueue(); // 次の操作を処理
             })
             .catch(error => {
-                this.bleQueueBusy = false; // エラー時にもフラグをリセット
+                clearTimeout(timeout); // タイムアウトをクリア
+                console.error('Unexpected error in operation:', error);
                 reject(error);
+            })
+            .finally(() => {
+                this.bleQueueBusy = false; // 操作が完了したらフラグをリセット
                 this.processBLEQueue(); // 次の操作を処理
             });
     }
@@ -1067,22 +1079,6 @@ export class PcratchIoT {
      * @param {Uint8Array} command.message Contents of the command.
      * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
      */
-    sendOneCommand(command) {
-        console.log('sendOneCommand M4');
-        return this.enqueueBLEOperation(() => {
-            const data = new Uint8Array([
-                command.id,
-                ...command.message
-            ]);
-            return this._ble.write(
-                MM_SERVICE.ID,
-                MM_SERVICE.COMMAND_CH,
-                data,
-                null,
-                true    // resolve after peripheral's response.
-            );
-        });
-    }
     sendOneCommand(command) {
         console.log('sendOneCommand M4');
         return this.enqueueBLEOperation(() => {
