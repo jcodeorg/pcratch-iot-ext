@@ -5,17 +5,17 @@ import {FormattedMessage} from 'react-intl';
  * MicroBit More extension
  */
 
-import iconURL from './entry-icon.png';
-import insetIconURL from './inset-icon.svg';
-import connectionIconURL from './connection-icon.svg';
-import connectionSmallIconURL from './connection-small-icon.svg';
+import pcratchIoTIconURL from './entry-icon.png';
+import pcratchIoTInsetIconURL from './inset-icon.svg';
+import pcratchIoTConnectionIconURL from './connection-icon.svg';
+import pcratchIoTConnectionSmallIconURL from './connection-small-icon.svg';
 
-const version = '0.1.6';
+const version = 'v1.4.5.3';
 const translations =
 {
     "en": {
         "pcratchIoT.entry.name": "Pcratch IoT",
-        "pcratchIoT.entry.description": `Play with functions of Pcratch IoT(v0.1.12).(${version})`
+        "pcratchIoT.entry.description": `Play with functions of Pcratch IoT. (${version})`
     },
     "ja": {
         "pcratchIoT.entry.name": "ぷくらっち IoT",
@@ -38,11 +38,11 @@ const entry = {
     extensionId: 'pcratchIoT',
     extensionURL: null,
     collaborator: 'Programming Education Lab',
-    iconURL: iconURL,
-    insetIconURL: insetIconURL,
+    iconURL: pcratchIoTIconURL,
+    insetIconURL: pcratchIoTInsetIconURL,
     description: (
         <FormattedMessage
-            defaultMessage="Play with Pcratch IoT(v0.1.12)."
+            defaultMessage='Play with all of Pcratch IoT.'
             description="Description for the 'Pcratch IoT' extension"
             id="pcratchIoT.entry.description"
         />
@@ -53,8 +53,8 @@ const entry = {
     internetConnectionRequired: false,
     launchPeripheralConnectionFlow: true,
     useAutoScan: false,
-    connectionIconURL: connectionIconURL,
-    connectionSmallIconURL: connectionSmallIconURL,
+    connectionIconURL: pcratchIoTConnectionIconURL,
+    connectionSmallIconURL: pcratchIoTConnectionSmallIconURL,
     connectingMessage: (
         <FormattedMessage
             defaultMessage="Connecting"
